@@ -110,8 +110,6 @@ This book is not written to be read. It is written to be executed.
 
 II.  To Be Done
 
-
-
 "The manifesto does not exist to debate the future, but to administer it. We have reached a point in history where the capability of technology has outpaced the logic of economics. Demanding payment for what machines produce for free is no longer economics—it is oppression. This text is the instruction manual for how we lift the yoke."
 
 
