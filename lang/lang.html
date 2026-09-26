@@ -327,7 +327,10 @@ document.documentElement.dir = RTL_LANGS.includes(lang) ? 'rtl' : 'ltr';
 
 document.getElementById('flag-icon').src = langData.flag;
 document.getElementById('flag-icon').alt = langData.name;
-document.getElementById('language-label').textContent = langData.name;
+document.getElementById('language-label').textContent = 
+    langData.englishName 
+        ? langData.name + ' (' + langData.englishName + ')' 
+        : langData.name;
 document.getElementById('book-title').textContent = langData.title;
 document.getElementById('book-subtitle').textContent = langData.subtitle;
 
