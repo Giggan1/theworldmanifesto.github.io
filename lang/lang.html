@@ -392,10 +392,10 @@ async function loadText() {
 
         // Spara rad 6 (4:e icke-tomma raden) som författarnamn
         if (nonEmptyLines.length >= 4) {
-            authorNameFromText = nonEmptyLines[3].trim();
+            authorNameFromText = nonEmptyLines[2].trim();
         }
 
-        for (let i = 4; i < nonEmptyLines.length; i++) {
+        for (let i = 3; i < nonEmptyLines.length; i++) {
             let rawLine = nonEmptyLines[i];
             let line = rawLine.trim();
 
