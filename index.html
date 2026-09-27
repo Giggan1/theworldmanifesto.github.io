@@ -25,10 +25,6 @@
         }
         main { text-align: center; }
 
-        /* ======================================== */
-        /* NAVIGATION – READ + MENY                 */
-        /* ======================================== */
-
         .nav-wrapper {
             display: flex;
             align-items: center;
@@ -80,10 +76,6 @@
             .read-menu label { font-size: 12px; }
         }
 
-        /* ======================================== */
-        /* QUOTE-RUTAN                               */
-        /* ======================================== */
-
         #quote-box {
             max-width: 680px;
             margin: 30px auto;
@@ -118,10 +110,6 @@
         .bm { background: #666; color: #fff; }
         .bc { background: #fff; color: #000; border: 1px solid #ccc; }
 
-        /* ======================================== */
-        /* FLAGGOR - flagpedia.net                  */
-        /* ======================================== */
-
         .lang-flags {
             display: flex;
             gap: 12px;
@@ -143,7 +131,6 @@
         .lang-flag-img { width: 30px; height: 20px; object-fit: cover; display: block; background: transparent; border: 1px solid #333; box-sizing: border-box; }
         .lang-flag-img[src$="kr.svg"] { width: 33.5px; height: 22px; object-fit: cover; }
 
-        /* Flaggor med bokstäver ovanpå (för delade flaggor) */
         .flag-wrapper {
             position: relative;
             display: inline-flex;
@@ -172,7 +159,6 @@
             line-height: 1;
         }
 
-        /* Språknamn under flaggorna – klickbara länkar utan styling */
         .lang-flags .lang-label,
         .lang-flags .lang-label a,
         .flag-wrapper .lang-label,
@@ -200,10 +186,6 @@
             text-align: start;
             font-family: sans-serif;
         }
-
-/* ======================================== */
-/* DAGENS SLOGAN – DISKRET RUTA              */
-/* ======================================== */
 
 #slogan-section {
     max-width: 680px;
@@ -277,12 +259,10 @@
     <div class="container">
         <main>
             
-            <!-- TVÅRADIG TITEL -->
             <h1 id="main-title" style="font-size: 36px; font-weight: normal; margin-bottom: 5px;">The World Manifesto</h1>
             <h2 id="main-subtitle" style="font-size: 20px; font-weight: normal; color: #555; margin: 5px 0 25px 0; display: none;"></h2>
             <h3 id="main-tagline" style="font-size: 18px; font-weight: normal; font-style: italic; color: #8B0000; margin: 0 0 25px 0;">The Economy of Brilliance</h3>
 
-            <!-- BILD OCH FRIHETSTRAPPAN -->
             <div style="margin-bottom: 25px; text-align: center;">
                 <img src="pics/freedom_staircase_main_page.jpg" alt="Freedom Staircase" style="width: 75%; height: auto;">
                 <p id="staircase-text" style="font-size: 16px; font-weight: bold; margin-top: 8px; letter-spacing: 0.5px;">
@@ -290,10 +270,11 @@
                 </p>
             </div>
 
-            <!-- ======================================== -->
-            <!-- ALLA FLAGGOR I ORDNING EFTER TALARE      -->
-            <!-- ======================================== -->
             <div class="lang-flags">
+                <div>
+                    <a href="lang/read.html?lang=sv" title="Svenska"><img src="lang/flags/se.svg" class="lang-flag-img"></a>
+                    <span class="lang-label"><a href="lang/read.html?lang=sv">Svenska</a></span>
+                </div>
                 <div>
                     <a href="lang/read.html?lang=en" title="English"><img src="lang/flags/gb.svg" class="lang-flag-img"></a>
                     <span class="lang-label"><a href="lang/read.html?lang=en">English</a></span>
@@ -452,10 +433,6 @@
                     <span class="lang-label"><a href="lang/read.html?lang=bg">Български</a></span>
                 </div>
                 <div>
-                    <a href="lang/read.html?lang=sv" title="Svenska"><img src="lang/flags/se.svg" class="lang-flag-img"></a>
-                    <span class="lang-label"><a href="lang/read.html?lang=sv">Svenska</a></span>
-                </div>
-                <div>
                     <a href="lang/read.html?lang=hu" title="Magyar"><img src="lang/flags/hu.svg" class="lang-flag-img"></a>
                     <span class="lang-label"><a href="lang/read.html?lang=hu">Magyar</a></span>
                 </div>
@@ -497,9 +474,6 @@
                 </div>
             </div>
 
-            <!-- ======================================== -->
-            <!-- DE FYRA STEGEN – STATISK RUTA             -->
-            <!-- ======================================== -->
             <div id="steps-section">
                 <h3 id="steps-title" style="text-align: center; color: #8B0000; font-size: 22px; margin-top: 0; margin-bottom: 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">Världsmanifestet i 4 steg</h3>
                 <ol style="color: #4A0E0E; font-size: 16px; line-height: 1.6; margin: 0; padding-inline-start: 25px;">
@@ -510,7 +484,6 @@
                 </ol>
             </div>
             
-            <!-- QUOTE-RUTAN -->
             <div id="quote-box">
                 <div id="quote-text"></div>
                 <div id="dots" class="dots"></div>
@@ -524,9 +497,6 @@
                 </div>
             </div>
 
-<!-- ======================================== -->
-<!-- DAGENS SLOGAN – DISKRET, NEDANFÖR CITATEN -->
-<!-- ======================================== -->
 <div id="slogan-section">
     <button id="slogan-toggle" type="button" aria-expanded="false">
         ▾ Visa dagens slogan
@@ -542,12 +512,10 @@
     </div>
 
     <script>
-        // === GLOBALA VARIABLER ===
         const PAGE = "https://theworldmanifesto.github.io/";
         const MANIFESTO = "The World Manifesto";
         const COPIED = "Copied!";
 
-        // === SPRÅKHANTERING ===
         const urlParams = new URLSearchParams(window.location.search);
         const RELATED_FALLBACK = {
   "af-za": "af", "af-na": "af",
@@ -559,9 +527,7 @@
   "bg-bg": "bg",
   "bn-bd": "bn", "bn-in": "bn", "rkt": "bn",
   "ca": "es", "ca-ad": "es", "ca-es": "es", "ca-fr": "es", "ca-it": "es", "ca-valencia": "es",
-  "ceb": "fil",
-  "co": "it",
-  "crh": "tr",
+  "ceb": "fil", "co": "it", "crh": "tr",
   "crs": "crs", "crs-sc": "crs",
   "cs-cz": "cs",
   "da-dk": "da", "da-gl": "da",
@@ -574,4 +540,4 @@
   "fil-ph": "fil", "tl": "fil", "tl-ph": "fil", "ilo": "fil",
   "fit": "fit", "fit-fi": "fit", "fit-no": "fit", "fit-se": "fit", "fi-se-tornio": "fit", "fi-tornio": "fit", "fkv": "fit", "fkv-fi": "fit", "fkv-no": "fit", "kvk": "fit",
   "fo": "fo", "fo-dk": "fo", "fo-fa": "fo", "fo-fare": "fo", "fo-fo": "fo", "fo-gl": "fo", "fo-no": "fo", "fo-se": "fo", "fao": "fo",
-  "fr-be": "fr", "fr-bf": "fr", "fr-ca": "fr", "fr-cd": "fr", "fr-cg": "fr", "fr-ch": "fr", "fr-ci": "fr", "fr-cm": "fr", "fr-fr": "fr", "fr-gn": "fr", "fr-ht": "fr", "fr-lu": "fr", "fr-mc": "fr", "fr-ml": "fr", "fr-ne": "fr", "fr-pf": "fr",
+  "fr-be": "fr", "fr-bf": "fr", "fr-ca": "fr", "fr-cd": "fr", "fr-cg": "fr", "fr-ch": "fr", "fr-ci": "fr", "fr-cm": "fr", "fr-fr": "fr", "fr-gn": "fr", "fr-ht":
