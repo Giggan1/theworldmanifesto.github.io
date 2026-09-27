@@ -295,12 +295,20 @@
                     <a href="lang/read.html?lang=fr" title="Français"><img src="lang/flags/fr.svg" class="lang-flag-img"></a>
                     <span class="lang-label"><a href="lang/read.html?lang=fr">Français</a></span>
                 </div>
+                <!-- Indonesiska och Javanesiska -->
                 <div class="flag-wrapper">
                     <a href="lang/read.html?lang=id">
                         <img src="lang/flags/id.svg" class="lang-flag-img" alt="Bahasa Indonesia">
                         <span class="letter">I</span>
                     </a>
                     <span class="lang-label"><a href="lang/read.html?lang=id">Bahasa Indonesia</a></span>
+                </div>
+                <div class="flag-wrapper">
+                    <a href="lang/read.html?lang=jv">
+                        <img src="lang/flags/id.svg" class="lang-flag-img" alt="Basa Jawa">
+                        <span class="letter">J</span>
+                    </a>
+                    <span class="lang-label"><a href="lang/read.html?lang=jv">Basa Jawa / Javanese</a></span>
                 </div>
                 <div>
                     <a href="lang/read.html?lang=ar" title="العربية"><img src="lang/flags/sa.svg" class="lang-flag-img"></a>
@@ -318,6 +326,7 @@
                     <a href="lang/read.html?lang=ru" title="Русский"><img src="lang/flags/ru.svg" class="lang-flag-img"></a>
                     <span class="lang-label"><a href="lang/read.html?lang=ru">Русский</a></span>
                 </div>
+                <!-- Urdu och Punjabi -->
                 <div class="flag-wrapper">
                     <a href="lang/read.html?lang=ur">
                         <img src="lang/flags/pk.svg" class="lang-flag-img" alt="اردو">
@@ -343,13 +352,6 @@
                 <div>
                     <a href="lang/read.html?lang=de" title="Deutsch"><img src="lang/flags/de.svg" class="lang-flag-img"></a>
                     <span class="lang-label"><a href="lang/read.html?lang=de">Deutsch</a></span>
-                </div>
-                <div class="flag-wrapper">
-                    <a href="lang/read.html?lang=jv">
-                        <img src="lang/flags/id.svg" class="lang-flag-img" alt="Basa Jawa">
-                        <span class="letter">J</span>
-                    </a>
-                    <span class="lang-label"><a href="lang/read.html?lang=jv">Basa Jawa / Javanese</a></span>
                 </div>
                 <div>
                     <a href="lang/read.html?lang=yue" title="粵語 / Cantonese"><img src="lang/flags/hk.svg" class="lang-flag-img"></a>
@@ -391,20 +393,13 @@
                     <a href="lang/read.html?lang=uk" title="Українська"><img src="lang/flags/ua.svg" class="lang-flag-img"></a>
                     <span class="lang-label"><a href="lang/read.html?lang=uk">Українська</a></span>
                 </div>
+                <!-- Sydafrikanska flaggor: Zulu, Afrikaans, Xhosa -->
                 <div class="flag-wrapper">
                     <a href="lang/read.html?lang=zu">
                         <img src="lang/flags/za.svg" class="lang-flag-img" alt="isiZulu">
                         <span class="letter">Z</span>
                     </a>
                     <span class="lang-label"><a href="lang/read.html?lang=zu">isiZulu</a></span>
-                </div>
-                <div>
-                    <a href="lang/read.html?lang=nl" title="Nederlands"><img src="lang/flags/nl.svg" class="lang-flag-img"></a>
-                    <span class="lang-label"><a href="lang/read.html?lang=nl">Nederlands</a></span>
-                </div>
-                <div>
-                    <a href="lang/read.html?lang=ro" title="Română"><img src="lang/flags/ro.svg" class="lang-flag-img"></a>
-                    <span class="lang-label"><a href="lang/read.html?lang=ro">Română</a></span>
                 </div>
                 <div class="flag-wrapper">
                     <a href="lang/read.html?lang=af">
@@ -419,6 +414,14 @@
                         <span class="letter">X</span>
                     </a>
                     <span class="lang-label"><a href="lang/read.html?lang=xh">isiXhosa</a></span>
+                </div>
+                <div>
+                    <a href="lang/read.html?lang=nl" title="Nederlands"><img src="lang/flags/nl.svg" class="lang-flag-img"></a>
+                    <span class="lang-label"><a href="lang/read.html?lang=nl">Nederlands</a></span>
+                </div>
+                <div>
+                    <a href="lang/read.html?lang=ro" title="Română"><img src="lang/flags/ro.svg" class="lang-flag-img"></a>
+                    <span class="lang-label"><a href="lang/read.html?lang=ro">Română</a></span>
                 </div>
                 <div>
                     <a href="lang/read.html?lang=cs" title="Čeština"><img src="lang/flags/cz.svg" class="lang-flag-img"></a>
@@ -580,7 +583,7 @@
   "xh-za": "xh"
 };
 
-        const AVAILABLE = ['sv','en','fi','zh','yue','hi','bn','ur','pa','id','jv','es','fr','de','ar','pt','ru','uk','bg','ja','fil','ko','th','vi','tr','fa','sw','it','pl','nl','ro','el','hu','he','crs','no','se','fit','da','is','fo','cs','af','zu','xh'];
+        const AVAILABLE = ['sv','en','zh','hi','es','fr','id','jv','ar','bn','pt','ru','ur','pa','ja','fil','de','yue','vi','tr','ko','th','fa','sw','it','pl','uk','zu','af','xh','nl','ro','cs','el','bg','hu','he','da','fi','no','is','crs','fo','se','fit'];
 
         function pickBestLanguage(available = AVAILABLE, preferred = []) {
             const prefs = (preferred.length ? preferred : (typeof navigator !== 'undefined' ? (navigator.languages || [navigator.language]) : [])).map(s => String(s).toLowerCase());
