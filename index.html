@@ -540,4 +540,419 @@
   "fil-ph": "fil", "tl": "fil", "tl-ph": "fil", "ilo": "fil",
   "fit": "fit", "fit-fi": "fit", "fit-no": "fit", "fit-se": "fit", "fi-se-tornio": "fit", "fi-tornio": "fit", "fkv": "fit", "fkv-fi": "fit", "fkv-no": "fit", "kvk": "fit",
   "fo": "fo", "fo-dk": "fo", "fo-fa": "fo", "fo-fare": "fo", "fo-fo": "fo", "fo-gl": "fo", "fo-no": "fo", "fo-se": "fo", "fao": "fo",
-  "fr-be": "fr", "fr-bf": "fr", "fr-ca": "fr", "fr-cd": "fr", "fr-cg": "fr", "fr-ch": "fr", "fr-ci": "fr", "fr-cm": "fr", "fr-fr": "fr", "fr-gn": "fr", "fr-ht":
+  "fr-be": "fr", "fr-bf": "fr", "fr-ca": "fr", "fr-cd": "fr", "fr-cg": "fr", "fr-ch": "fr", "fr-ci": "fr", "fr-cm": "fr", "fr-fr": "fr", "fr-gn": "fr", "fr-ht": "fr", "fr-lu": "fr", "fr-mc": "fr", "fr-ml": "fr", "fr-ne": "fr", "fr-pf": "fr", "fr-rw": "fr", "fr-sn": "fr", "fr-td": "fr",
+  "fy": "nl", "gl": "es", "gag": "tr",
+  "gn": "es", "gn-py": "es", "gug": "es",
+  "he-il": "he", "yi": "he",
+  "hi-in": "hi", "bho": "hi", "hif": "hi",
+  "ht": "crs", "hu-hu": "hu",
+  "id-id": "id", "ms": "id", "ms-bn": "id", "ms-id": "id", "ms-my": "id", "ms-sg": "id", "ind": "id", "zsm": "id",
+  "is-is": "is",
+  "it-ch": "it", "it-it": "it", "it-sm": "it", "it-va": "it", "lmo": "it", "scn": "it", "vec": "it",
+  "ja-jp": "ja", "jv-id": "jv", "jav": "jv", "jvn": "jv", "ko-kp": "ko", "ko-kr": "ko",
+  "mfe": "crs", "mwl": "pt",
+  "nb": "no", "nb-no": "no", "nn": "no", "nn-no": "no", "no-no": "no", "nob": "no", "nno": "no",
+  "nl-be": "nl", "nl-nl": "nl", "zea": "nl",
+  "pa-in": "pa", "pa-pk": "pa", "pan": "pa", "pnb": "pa",
+  "pl-pl": "pl", "szl": "pl",
+  "pt-ao": "pt", "pt-br": "pt", "pt-ch": "pt", "pt-cv": "pt", "pt-gw": "pt", "pt-lu": "pt", "pt-mo": "pt", "pt-mz": "pt", "pt-pt": "pt", "pt-st": "pt", "pt-tl": "pt",
+  "qu": "es", "qu-bo": "es", "qu-ec": "es", "qu-pe": "es", "quz": "es", "qve": "es", "qwh": "es",
+  "ro-md": "ro", "ro-ro": "ro", "mo": "ro", "rup": "ro",
+  "ru-by": "ru", "ru-kg": "ru", "ru-kz": "ru", "ru-md": "ru", "ru-ru": "ru", "ru-ua": "ru",
+  "se": "se", "se-fi": "se", "se-no": "se", "se-se": "se", "sia": "se", "sjd": "se", "sjd-ru": "se", "sje": "se", "sje-no": "se", "sje-se": "se", "sjk": "se", "sjt": "se", "sju": "se", "sju-no": "se", "sju-se": "se", "sma": "se", "sma-no": "se", "sma-se": "se", "sme": "se", "smi": "se", "smi-fi": "se", "smi-no": "se", "smi-ru": "se", "smi-se": "se", "smj": "se", "smj-no": "se", "smj-se": "se", "smn": "se", "smn-fi": "se", "sms": "se", "sms-fi": "se", "sms-no": "se", "sms-ru": "se",
+  "sk": "cs", "sk-sk": "cs",
+  "sv-ax": "sv", "sv-fi": "sv", "sv-se": "sv",
+  "sw-cd": "sw", "sw-ke": "sw", "sw-tz": "sw", "sw-ug": "sw",
+  "th-th": "th",
+  "tr-cy": "tr", "tr-tr": "tr",
+  "uk-ua": "uk", "rue": "uk",
+  "ur-in": "ur", "ur-pk": "ur",
+  "vi-vn": "vi",
+  "wuu": "zh", "yue": "yue", "yue-hk": "yue",
+  "zh-cn": "zh", "zh-hans": "zh", "zh-hant": "zh", "zh-hk": "zh", "zh-mo": "zh", "zh-sg": "zh", "zh-tw": "zh",
+  "wa": "fr", "wa-be": "fr", "wln": "fr",
+  "li": "nl", "li-be": "nl", "li-nl": "nl", "lim": "nl",
+  "lb": "de", "lb-lu": "de",
+  "br": "fr", "br-fr": "fr",
+  "sc": "it", "sc-it": "it",
+  "rm": "it", "rm-ch": "it",
+  "zu-za": "zu",
+  "xh-za": "xh"
+};
+
+        const AVAILABLE = ['sv','en','fi','zh','yue','hi','bn','ur','pa','id','jv','es','fr','de','ar','pt','ru','uk','bg','ja','fil','ko','th','vi','tr','fa','sw','it','pl','nl','ro','el','hu','he','crs','no','se','fit','da','is','fo','cs','af','zu','xh'];
+
+        function pickBestLanguage(available = AVAILABLE, preferred = []) {
+            const prefs = (preferred.length ? preferred : (typeof navigator !== 'undefined' ? (navigator.languages || [navigator.language]) : [])).map(s => String(s).toLowerCase());
+            for (const raw of prefs) {
+                const tag = raw.toLowerCase().trim();
+                if (!tag) continue;
+                if (available.includes(tag)) return tag;
+                const base = tag.split('-')[0];
+                if (available.includes(base)) return base;
+                if (RELATED_FALLBACK[tag] && available.includes(RELATED_FALLBACK[tag])) return RELATED_FALLBACK[tag];
+                if (RELATED_FALLBACK[base] && available.includes(RELATED_FALLBACK[base])) return RELATED_FALLBACK[base];
+                try { const max = new Intl.Locale(tag).maximize(); if (available.includes(max.language)) return max.language; } catch(e) {}
+            }
+            return available.includes('en') ? 'en' : available[0];
+        }
+
+        const urlLangParam = urlParams.get('lang');
+        const currentLang = urlLangParam ? pickBestLanguage(AVAILABLE, [urlLangParam]) : pickBestLanguage();
+        const RTL_LANGS = ['ar', 'he', 'fa', 'ur'];
+        document.documentElement.dir = RTL_LANGS.includes(currentLang) ? 'rtl' : 'ltr';
+
+        var titlar = {
+            'sv': 'Världsmanifestet', 'en': 'The World Manifesto', 'zh': '世界宣言',
+            'yue': '世界宣言', 'hi': 'विश्व घोषणापत्र', 'es': 'El Manifiesto Mundial',
+            'fr': 'Le Manifeste Mondial', 'de': 'Weltmanifest', 'fi': 'Maailmanmanifesti',
+            'ja': '世界宣言', 'ko': '세계 선언문', 'ru': 'Всемирный манифест',
+            'pt': 'O Manifesto Mundial', 'it': 'Manifesto Mondiale', 'ar': 'البيان العالمي',
+            'id': 'Manifest Dunia', 'jv': 'Manifesto Jagad', 'bn': 'বিশ্ব ইশতেহার',
+            'pa': 'ਵਿਸ਼ਵ ਘੋਸ਼ਣਾ ਪੱਤਰ', 'uk': 'Всесвітній маніфест',
+            'bg': 'Световен манифест', 'ur': 'عالمی منشور', 'fil': 'Manipesto ng Mundo',
+            'th': 'แถลงการณ์โลก', 'vi': 'Tuyên ngôn Thế giới', 'tr': 'Dünya Manifestosu',
+            'fa': 'مانیفست جهانی', 'sw': 'Ilani ya Dunia', 'pl': 'Manifest Światowy',
+            'nl': 'Wereldmanifest', 'ro': 'Manifestul Mondial', 'el': 'Παγκόσμιο Μανιφέστο',
+            'af': 'Wêreldmanifest', 'zu': 'IManifesto Yomhlaba', 'xh': 'IManifesto Yehlabathi',
+            'cs': 'Světový manifest', 'hu': 'Világkiáltvány', 'he': 'מניפסט העולם',
+            'crs': 'Manifest lemonn', 'no': 'Verdensmanifestet', 'se': 'Máilmmi Manifesta',
+            'fit': 'Mailmanmanifesti', 'da': 'Verdensmanifestet', 'is': 'Heimsmanifestið',
+            'fo': 'Heimsskráin'
+        };
+
+        var tagline = {
+            'sv': 'Briljansens ekonomi', 'en': 'The Economy of Brilliance',
+            'zh': '辉煌经济', 'yue': '輝煌經濟', 'hi': 'प्रतिभा की अर्थव्यवस्था',
+            'es': 'La Economía de la Brillantez', 'fr': 'L\'Économie de la Brilliance',
+            'de': 'Die Ökonomie der Brillanz', 'fi': 'Loistokkuuden talous',
+            'ja': '輝きの経済', 'ko': '광채의 경제', 'ru': 'Экономика блеска',
+            'pt': 'A Economia do Brilho', 'it': 'L\'Economia della Brillantezza',
+            'ar': 'اقتصاد التألق', 'id': 'Ekonomi Kecemerlangan',
+            'jv': 'Ékonomi Kasinaran', 'bn': 'উজ্জ্বলতার অর্থনীতি',
+            'pa': 'ਚਮਕ ਦੀ ਆਰਥਿਕਤਾ', 'uk': 'Економіка блиску',
+            'bg': 'Икономика на блясъка', 'ur': 'چمک کی معیشت',
+            'fil': 'Ang Ekonomiya ng Kakinangan', 'th': 'เศรษฐกิจแห่งความเปล่งประกาย',
+            'vi': 'Nền kinh tế của sự rực rỡ', 'tr': 'Parlaklığın Ekonomisi',
+            'fa': 'اقتصاد درخشش', 'sw': 'Uchumi wa Uangavu', 'pl': 'Ekonomia Blasku',
+            'nl': 'De Economie van Briljantie', 'ro': 'Economia Strălucirii',
+            'el': 'Η Οικονομία της Λάμψης', 'af': 'Die Ekonomie van Briljansie',
+            'zu': 'Umnoto Womnotho Wobukhazikhazi', 'xh': 'Uqoqosho lokuKhazimla',
+            'cs': 'Ekonomika Záře', 'hu': 'A Ragyogás Gazdaságtana',
+            'he': 'כלכלת הבהירות', 'crs': 'Lekonomi Brijans',
+            'no': 'Briljansens økonomi', 'se': 'Čilggi Ekonomiija',
+            'fit': 'Loistokkuuen talous', 'da': 'Briljansens økonomi',
+            'is': 'Bjarndýrs hagkerfið', 'fo': 'Gloðið búskapur'
+        };
+
+        var trappan = {
+            'en': 'Freedom Staircase', 'sv': 'Frihetstrappan', 'fi': 'Vapauden portaat',
+            'zh': '自由阶梯', 'yue': '自由階梯', 'hi': 'स्वतंत्रता सीढ़ी',
+            'es': 'Escalera de la Libertad', 'fr': 'Escalier de la Liberté',
+            'de': 'Freiheitstreppe', 'ar': 'سلم الحرية', 'id': 'Tangga Kebebasan',
+            'jv': 'Tangga Kabébasan', 'bn': 'স্বাধীনতার সিঁড়ি',
+            'pa': 'ਆਜ਼ਾਦੀ ਦੀ ਪੌੜੀ', 'pt': 'Escada da Liberdade',
+            'ru': 'Лестница Свободы', 'uk': 'Сходи Свободи',
+            'bg': 'Стълбата на свободата', 'ur': 'آزادی کی سیڑھی',
+            'ja': '自由の階段', 'fil': 'Hagdan ng Kalayaan', 'ko': '자유의 계단',
+            'th': 'บันไดเสรีภาพ', 'vi': 'Cầu thang Tự do', 'tr': 'Özgürlük Merdiveni',
+            'fa': 'پلکان آزادی', 'sw': 'Ngazi ya Uhuru', 'it': 'Scala della Libertà',
+            'pl': 'Schody Wolności', 'nl': 'Vrijheidstrap', 'ro': 'Scara Libertății',
+            'el': 'Σκάλα της Ελευθερίας', 'af': 'Vryheidstrap',
+            'zu': 'Izitebhisi Zenkululeko', 'xh': 'Izinyuko Zenkululeko',
+            'cs': 'Schody svobody', 'hu': 'A Szabadság Lépcsői',
+            'he': 'מדרגות החירות', 'crs': 'Leskal Libète',
+            'no': 'Frihetstrappen', 'se': 'Frihetstrappa',
+            'fit': 'Vapauden portaat', 'da': 'Frihedstrappen',
+            'is': 'Frelsisstiginn', 'fo': 'Frælsistrappan'
+        };
+
+        let stepsTranslations = {};
+
+        fetch('four_steps.json')
+            .then(response => response.json())
+            .then(data => {
+                stepsTranslations = data;
+                updateSteps();
+            })
+            .catch(err => {
+                console.error('Fel vid inläsning av four_steps.json:', err);
+            });
+
+        function updateTitleAndStaircase() {
+            if (currentLang !== 'en' && titlar[currentLang]) {
+                document.getElementById('main-subtitle').textContent = titlar[currentLang];
+                document.getElementById('main-subtitle').style.display = 'block';
+            } else {
+                document.getElementById('main-subtitle').style.display = 'none';
+            }
+
+            var taglineEl = document.getElementById('main-tagline');
+            if (taglineEl) {
+                taglineEl.textContent = tagline[currentLang] || tagline['en'];
+            }
+
+            var staircaseText = document.getElementById('staircase-text');
+            if (staircaseText) {
+                var text = trappan[currentLang] || trappan['en'] || 'Frihetstrappan';
+                staircaseText.textContent = text;
+            }
+        }
+
+        function updateSteps() {
+            if (!stepsTranslations || Object.keys(stepsTranslations).length === 0) {
+                return;
+            }
+            let langToUse = currentLang;
+            if (!stepsTranslations[langToUse]) langToUse = 'en';
+            const trans = stepsTranslations[langToUse];
+            if (trans) {
+                document.getElementById('steps-title').textContent = trans.title;
+                document.getElementById('step-1').innerHTML = trans.steps[0];
+                document.getElementById('step-2').innerHTML = trans.steps[1];
+                document.getElementById('step-3').innerHTML = trans.steps[2];
+                document.getElementById('step-4').innerHTML = trans.steps[3];
+            }
+        }
+
+        let quotes = [];
+        let i = 0, paused = false;
+        const q = document.getElementById('quote-text');
+        const dots = document.getElementById('dots');
+
+        function showQuote() {
+            q.style.opacity = 0;
+            setTimeout(() => {
+                const t = quotes[i];
+                const shareText = '"' + t + '" — The World Manifesto ' + PAGE;
+                q.textContent = '"' + t + '"';
+                q.style.opacity = 1;
+
+                document.getElementById('btn-x').onclick = (e) => { e.preventDefault(); window.open('https://x.com/intent/tweet?text=' + encodeURIComponent(shareText), '_blank'); };
+                document.getElementById('btn-fb').onclick = (e) => { e.preventDefault(); window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(PAGE) + '&quote=' + encodeURIComponent(shareText), '_blank'); };
+                document.getElementById('btn-wa').onclick = (e) => { e.preventDefault(); window.open('https://wa.me/?text=' + encodeURIComponent(shareText), '_blank'); };
+                document.getElementById('btn-tg').onclick = (e) => { e.preventDefault(); window.open('https://t.me/share/url?url=' + encodeURIComponent(PAGE) + '&text=' + encodeURIComponent(shareText), '_blank'); };
+                document.getElementById('btn-em').onclick = (e) => { e.preventDefault(); window.location.href = 'mailto:?subject=' + encodeURIComponent(MANIFESTO) + '&body=' + encodeURIComponent(shareText); };
+                document.getElementById('btn-copy').onclick = (e) => {
+                    e.preventDefault();
+                    navigator.clipboard.writeText(shareText);
+                    const old = document.getElementById('btn-copy').textContent;
+                    document.getElementById('btn-copy').textContent = COPIED;
+                    setTimeout(() => document.getElementById('btn-copy').textContent = old, 1200);
+                };
+
+                [...dots.children].forEach((a, b) => a.className = b === i ? 'dot on' : 'dot');
+            }, 200);
+        }
+
+        function nextQuote() {
+            if (!paused && quotes.length > 0) {
+                i = (i + 1) % quotes.length;
+                showQuote();
+            }
+        }
+
+        document.getElementById('quote-box').onmouseenter = () => paused = true;
+        document.getElementById('quote-box').onmouseleave = () => paused = false;
+
+        fetch('share/quotes.json')
+            .then(response => response.json())
+            .then(data => {
+                const langKey = currentLang.toUpperCase();
+                const quotesData = data[langKey] || data['EN'] || data['SV'] || {};
+                quotes = Object.values(quotesData);
+
+                if (quotes.length > 0) {
+                    quotes.forEach((_, idx) => {
+                        const d = document.createElement('span');
+                        d.className = 'dot' + (idx === 0 ? ' on' : '');
+                        d.onclick = () => { i = idx; showQuote(); };
+                        dots.appendChild(d);
+                    });
+                    showQuote();
+                    setInterval(nextQuote, 10000);
+                } else {
+                    q.textContent = 'Inga citat tillgängliga.';
+                }
+            })
+            .catch(err => {
+                console.error('Fel:', err);
+                q.textContent = 'Kunde inte ladda citat.';
+            });
+
+const sloganToggle = document.getElementById('slogan-toggle');
+const sloganBox    = document.getElementById('slogan-box');
+const sloganText   = document.getElementById('slogan-text');
+const sloganLabel  = document.getElementById('slogan-label');
+
+const SLOGAN_LABEL_TEXTS = {
+    'sv': 'Dagens slogan', 'en': "Today's Slogan", 'de': 'Slogan des Tages',
+    'fr': "Slogan du jour", 'es': 'Lema de hoy', 'it': 'Slogan del giorno',
+    'pt': 'Slogan do dia', 'nl': 'Slogan van de dag', 'pl': 'Slogan dnia',
+    'da': 'Dagens slogan', 'no': 'Dagens slogan', 'fi': 'Päivän iskulause',
+    'is': 'Dagsins slagorð', 'fo': 'Dagsins slagorð', 'cs': 'Slogan dne',
+    'hu': 'A nap szlogenje', 'ro': 'Sloganul zilei', 'el': 'Σύνθημα της ημέρας',
+    'tr': 'Günün Sloganı', 'ru': 'Лозунг дня', 'uk': 'Гасло дня',
+    'bg': 'Лозунг на деня', 'ar': 'شعار اليوم', 'he': 'סלוגן היום',
+    'fa': 'شعار امروز', 'ur': 'آج کا نعرہ', 'hi': 'आज का नारा',
+    'bn': 'আজকের স্লোগান', 'th': 'สโลแกนประจำวัน', 'vi': 'Khẩu hiệu hôm nay',
+    'id': 'Slogan hari ini', 'jv': 'Slogan dina iki', 'ja': '今日のスローガン',
+    'ko': '오늘의 구호', 'zh': '今日口号', 'yue': '今日口號',
+    'sw': 'Slogan ya leo', 'af': 'Slogan van die dag',
+    'zu': 'Isiqubulo sanamuhla', 'xh': 'Isiqubulo sasemhlabeni',
+    'crs': 'Slogan ozour', 'se': 'Beaivvi ságastallan',
+    'fit': 'Päivän slogan', 'pa': 'ਅੱਜ ਦਾ ਨਾਹਰਾ'
+};
+
+const SLOGAN_TOGGLE_TEXTS = {
+    'sv': '▾ Visa dagens slogan', 'en': "▾ Show today's slogan",
+    'de': '▾ Slogan des Tages anzeigen', 'fr': '▾ Afficher le slogan du jour',
+    'es': '▾ Mostrar el lema de hoy', 'it': '▾ Mostra lo slogan del giorno',
+    'pt': '▾ Mostrar o slogan do dia', 'nl': '▾ Toon slogan van de dag',
+    'pl': '▾ Pokaż slogan dnia', 'da': '▾ Vis dagens slogan',
+    'no': '▾ Vis dagens slogan', 'fi': '▾ Näytä päivän iskulause',
+    'is': '▾ Sýna slagorð dagsins', 'fo': '▾ Vís dagsins slagorð',
+    'cs': '▾ Zobrazit slogan dne', 'hu': '▾ A nap szlogenjének megjelenítése',
+    'ro': '▾ Afișează sloganul zilei', 'el': '▾ Εμφάνιση συνθήματος ημέρας',
+    'tr': '▾ Günün sloganını göster', 'ru': '▾ Показать лозунг дня',
+    'uk': '▾ Показати гасло дня', 'bg': '▾ Покажи лозунга на деня',
+    'ar': '▾ عرض شعار اليوم', 'he': '▾ הצג סלוגן היום',
+    'fa': '▾ نمایش شعار امروز', 'ur': '▾ آج کا نعرہ دکھائیں',
+    'hi': '▾ आज का नारा दिखाएँ', 'bn': '▾ আজকের স্লোগান দেখান',
+    'th': '▾ แสดงสโลแกนประจำวัน', 'vi': '▾ Hiện khẩu hiệu hôm nay',
+    'id': '▾ Tampilkan slogan hari ini', 'jv': '▾ Tampilake slogan dina iki',
+    'ja': '▾ 今日のスローガンを表示', 'ko': '▾ 오늘의 구호 보기',
+    'zh': '▾ 显示今日口号', 'yue': '▾ 顯示今日口號',
+    'sw': '▾ Onyesha slogan ya leo', 'af': '▾ Wys slogans van die dag',
+    'zu': '▾ Khombisa isiqubulo sanamuhla', 'xh': '▾ Bonisa isiqubulo sasemhlabeni',
+    'crs': '▾ Montre slogan ozour', 'se': '▾ Čájet beaivvi ságastallama',
+    'fit': '▾ Näytä päivän slogan', 'pa': '▾ ਅੱਜ ਦਾ ਨਾਹਰਾ ਦਿਖਾਓ'
+};
+
+const SLOGAN_SEE_ALL_TEXTS = {
+    'sv': 'Se alla slogans →', 'en': 'See all slogans →',
+    'de': 'Alle Slogans ansehen →', 'fr': 'Voir tous les slogans →',
+    'es': 'Ver todos los eslóganes →', 'it': 'Vedi tutti gli slogan →',
+    'pt': 'Ver todos os slogans →', 'nl': 'Bekijk alle slogans →',
+    'pl': 'Zobacz wszystkie slogany →', 'da': 'Se alle slogans →',
+    'no': 'Se alle slagord →', 'fi': 'Katso kaikki iskulauseet →',
+    'is': 'Sjá öll slagorð →', 'fo': 'Síggj øll slagorð →',
+    'cs': 'Zobrazit všechny slogany →', 'hu': 'Összes szlogen megtekintése →',
+    'ro': 'Vezi toate sloganurile →', 'el': 'Δείτε όλα τα συνθήματα →',
+    'tr': 'Tüm sloganları gör →', 'ru': 'Посмотреть все лозунги →',
+    'uk': 'Переглянути всі гасла →', 'bg': 'Виж всички лозунги →',
+    'ar': 'عرض كل الشعارات →', 'he': 'הצג את כל הסלוגנים →',
+    'fa': 'مشاهده همه شعارها →', 'ur': 'تمام نعرے دیکھیں →',
+    'hi': 'सभी नारे देखें →', 'bn': 'সব স্লোগান দেখুন →',
+    'th': 'ดูสโลแกนทั้งหมด →', 'vi': 'Xem tất cả khẩu hiệu →',
+    'id': 'Lihat semua slogan →', 'jv': 'Deleng kabeh slogan →',
+    'ja': 'すべてのスローガンを見る →', 'ko': '모든 구호 보기 →',
+    'zh': '查看所有口号 →', 'yue': '睇晒所有口號 →',
+    'sw': 'Ona slogan zote →', 'af': 'Sien alle slagspreuke →',
+    'zu': 'Bona zonke iziqubulo →', 'xh': 'Jonga zonke iingcaphuno →',
+    'crs': 'Get tou bann slogan →', 'se': 'Geahča buot ságastallamiid →',
+    'fit': 'Katso kaikki sloganit →', 'pa': 'ਸਾਰੇ ਨਾਹਰੇ ਵੇਖੋ →'
+};
+
+if (sloganLabel) {
+    sloganLabel.textContent = SLOGAN_LABEL_TEXTS[currentLang] || SLOGAN_LABEL_TEXTS['en'];
+}
+if (sloganToggle) {
+    sloganToggle.textContent = SLOGAN_TOGGLE_TEXTS[currentLang] || SLOGAN_TOGGLE_TEXTS['en'];
+}
+const sloganSeeAll = document.getElementById('slogan-see-all');
+if (sloganSeeAll) {
+    sloganSeeAll.textContent = SLOGAN_SEE_ALL_TEXTS[currentLang] || SLOGAN_SEE_ALL_TEXTS['en'];
+}
+
+if (sloganToggle && sloganBox) {
+    sloganToggle.addEventListener('click', () => {
+        const isVisible = sloganBox.classList.toggle('visible');
+        sloganToggle.setAttribute('aria-expanded', isVisible ? 'true' : 'false');
+        if (isVisible) {
+            loadDailySlogan();
+        }
+    });
+}
+
+let sloganLoaded = false;
+
+function loadDailySlogan() {
+    if (sloganLoaded || !sloganText) return;
+    sloganLoaded = true;
+
+    fetch('slogans.json')
+        .then(response => response.json())
+        .then(data => {
+            const langKey = currentLang.toUpperCase();
+            const slogansObj = data[langKey] || data['EN'] || data['SV'] || null;
+
+            if (!slogansObj) {
+                sloganText.textContent = 'Inga slogans tillgängliga.';
+                return;
+            }
+
+            const slogans = Array.isArray(slogansObj)
+                ? slogansObj
+                : Object.values(slogansObj);
+
+            if (slogans.length === 0) {
+                sloganText.textContent = 'Inga slogans tillgängliga.';
+                return;
+            }
+
+            const now = new Date();
+            const dayIndex = Math.floor(
+                (now.getTime() - now.getTimezoneOffset() * 60000) / 86400000
+            );
+            const idx = Math.abs(dayIndex) % slogans.length;
+            sloganText.textContent = slogans[idx];
+        })
+        .catch(err => {
+            console.error('Fel vid inläsning av slogans.json:', err);
+            sloganText.textContent = 'Kunde inte ladda slogans.';
+        });
+}
+
+        updateTitleAndStaircase();
+        updateSteps();
+    </script>
+
+    <script src="menu.js"></script>
+    <script src="footer.js"></script>
+
+<script>
+    (function() {
+        var countryToFlag = {
+            'US': [
+                { replace: 'gb', with: 'us' }
+            ],
+            'BR': [
+                { replace: 'pt', with: 'br' }
+            ],
+            'HK': [
+                { replace: 'cn', with: 'hk' }
+            ]
+        };
+
+        var lang = navigator.language || (navigator.languages && navigator.languages[0]) || '';
+        var parts = lang.split('-');
+        var country = parts[1] ? parts[1].toUpperCase() : '';
+
+        if (!country || !countryToFlag[country]) return;
+
+        var rules = countryToFlag[country];
+        var imgs = document.querySelectorAll('.lang-flags img');
+
+        imgs.forEach(function(img) {
+            rules.forEach(function(rule) {
+                if (img.src.indexOf('/' + rule.replace + '.svg') !== -1) {
+                    img.src = img.src.replace('/' + rule.replace + '.svg', '/' + rule.with + '.svg');
+                }
+            });
+        });
+    })();
+</script>
+
+</body>
+</html>
