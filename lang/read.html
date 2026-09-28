@@ -71,102 +71,13 @@
         }
     </style>
 
-    <script type="module">
-      import { pickBestLanguage, saveLanguage, getSavedLanguage, AVAILABLE, RELATED_FALLBACK } from './js/lang.js';
-
-      window._available = AVAILABLE;
-      window._related = RELATED_FALLBACK;
-      window._pick = () => pickBestLanguage(AVAILABLE);
-      window._saveLang = saveLanguage;
-      window._getSaved = getSavedLanguage;
-
-      const urlParams = new URLSearchParams(window.location.search);
-      const urlLangParam = urlParams.get('lang');
-
-      if (urlLangParam) {
-          const lc = urlLangParam.toLowerCase();
-          const mapped = RELATED_FALLBACK[lc] || lc;
-          if (AVAILABLE.includes(mapped)) {
-              saveLanguage(mapped);
-          } else if (AVAILABLE.includes(lc)) {
-              saveLanguage(lc);
-          }
-      }
-
-      window.addEventListener('DOMContentLoaded', () => {
-          const select = document.getElementById('read-select');
-          if (!select) return;
-
-          const current = urlLangParam ? urlLangParam.toLowerCase() : pickBestLanguage(AVAILABLE);
-          const mappedCurrent = RELATED_FALLBACK[current] || current;
-          if (select.querySelector(`option[value="${mappedCurrent}"]`)) {
-              select.value = mappedCurrent;
-          } else if (select.querySelector(`option[value="${current}"]`)) {
-              select.value = current;
-          }
-
-          select.addEventListener('change', (e) => {
-              const val = e.target.value;
-              if (!val) return;
-              saveLanguage(val);
-              window.location.href = 'read.html?lang=' + val;
-          });
-      });
-    </script>
-
     <link rel="stylesheet" href="../background_color.css">
 </head>
 <body>
     <div id="main-menu"></div>
 
     <div style="text-align: center; margin: 10px 0 20px 0;">
-        <select id="read-select" style="padding: 6px 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 13px; font-family: sans-serif; background: rgba(255, 255, 255, 0.9);">
-            <option value="">Välj språk</option>
-            <option value="sv">Svenska</option>
-            <option value="en">English</option>
-            <option value="zh">中文</option>
-            <option value="yue">粵語 / Cantonese</option>
-            <option value="hi">हिंदी</option>
-            <option value="bn">বাংলা</option>
-            <option value="ur">اردو</option>
-            <option value="pa">ਪੰਜਾਬੀ / Punjabi</option>
-            <option value="id">Bahasa Indonesia</option>
-            <option value="jv">Basa Jawa / Javanese</option>
-            <option value="es">Español</option>
-            <option value="fr">Français</option>
-            <option value="de">Deutsch</option>
-            <option value="ar">العربية</option>
-            <option value="pt">Português</option>
-            <option value="ru">Русский</option>
-            <option value="uk">Українська</option>
-            <option value="bg">Български</option>
-            <option value="ja">日本語</option>
-            <option value="fil">Filipino</option>
-            <option value="ko">한국어</option>
-            <option value="th">ไทย</option>
-            <option value="vi">Tiếng Việt</option>
-            <option value="tr">Türkçe</option>
-            <option value="fa">فارسی</option>
-            <option value="sw">Kiswahili</option>
-            <option value="it">Italiano</option>
-            <option value="pl">Polski</option>
-            <option value="nl">Nederlands</option>
-            <option value="ro">Română</option>
-            <option value="el">Ελληνικά</option>
-            <option value="hu">Magyar</option>
-            <option value="he">עברית</option>
-            <option value="crs">Kreol seselwa</option>
-            <option value="no">Norsk</option>
-            <option value="se">Davvisámegiella</option>
-            <option value="fit">Meänkieli</option>
-            <option value="da">Dansk</option>
-            <option value="is">Íslenska</option>
-            <option value="fo">Føroyskt</option>
-            <option value="cs">Čeština</option>
-            <option value="af">Afrikaans</option>
-            <option value="zu">isiZulu</option>
-            <option value="xh">isiXhosa</option>
-        </select>
+        <select id="read-select" style="padding: 6px 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 13px; font-family: sans-serif; background: rgba(255, 255, 255, 0.9);"></select>
     </div>
 
     <div class="page-container">
@@ -189,178 +100,132 @@
     <script src="js/copyright.js"></script>
     <script src="../menu.js"></script>
     <script src="../footer.js"></script>
-    <script>
-// ============================================================
-// 1. SPRÅKDATA
-// ============================================================
-const languages = {
-    'sv': { flag: 'flags/se.svg', name: 'Svenska', title: 'Världsmanifestet', subtitle: 'det definitiva överflödet' },
-    'en': { flag: 'flags/gb.svg', name: 'English', title: 'The World Manifesto', subtitle: 'the definitive abundance' },
-    'zh': { flag: 'flags/cn.svg', name: '简体中文', title: '世界宣言', subtitle: '终极丰裕' },
-    'yue': { flag: 'flags/hk.svg', name: '粵語 / Cantonese', title: '世界宣言', subtitle: '終極豐裕' },
-    'hi': { flag: 'flags/in.svg', name: 'हिन्दी', title: 'विश्व घोषणापत्र', subtitle: 'निश्चित प्रचुरता' },
-    'es': { flag: 'flags/es.svg', name: 'Español', title: 'El Manifiesto Mundial', subtitle: 'la abundancia definitiva' },
-    'fr': { flag: 'flags/fr.svg', name: 'Français', title: 'Le Manifeste Mondial', subtitle: 'l\'abondance définitive' },
-    'ar': { flag: 'flags/sa.svg', name: 'العربية', title: 'البيان العالمي', subtitle: 'الوفرة النهائية' },
-    'id': { flag: 'flags/id.svg', name: 'Bahasa Indonesia', title: 'Manifest Dunia', subtitle: 'kelimpahan definitif' },
-    'jv': { flag: 'flags/id.svg', name: 'Basa Jawa / Javanese', title: 'Manifesto Jagad', subtitle: 'Manifesto kangge kalimpahan ingkang mutlak' },
-    'bn': { flag: 'flags/bd.svg', name: 'বাংলা', title: 'বিশ্ব ইশতেহার', subtitle: 'চূড়ান্ত প্রাচুর্য' },
-    'pt': { flag: 'flags/pt.svg', name: 'Português', title: 'O Manifesto Mundial', subtitle: 'a abundância definitiva' },
-    'ru': { flag: 'flags/ru.svg', name: 'Русский', title: 'Всемирный Манифест', subtitle: 'окончательное изобилие' },
-    'uk': { flag: 'flags/ua.svg', name: 'Українська', title: 'Всесвітній Маніфест', subtitle: 'остаточний достаток' },
-    'bg': { flag: 'flags/bg.svg', name: 'Български', title: 'Световен Манифест', subtitle: 'окончателно изобилие' },
-    'ur': { flag: 'flags/pk.svg', name: 'اردو', title: 'عالمی منشور', subtitle: 'حتمی فراوانی' },
-    'pa': { flag: 'flags/pk.svg', name: 'ਪੰਜਾਬੀ / Punjabi', title: 'ਵਿਸ਼ਵ ਘੋਸ਼ਣਾ ਪੱਤਰ', subtitle: 'ਅੰਤਿਮ ਭਰਪੂਰਤਾ' },
-    'ja': { flag: 'flags/jp.svg', name: '日本語', title: '世界宣言', subtitle: '究極の豊かさ' },
-    'fil': { flag: 'flags/ph.svg', name: 'Filipino', title: 'Ang Pandaigdigang Manipesto', subtitle: 'ang tiyak na kasaganaan' },
-    'de': { flag: 'flags/de.svg', name: 'Deutsch', title: 'Das Weltmanifest', subtitle: 'Der definitive Überfluss' },
-    'ko': { flag: 'flags/kr.svg', name: '한국어', title: '세계 선언문', subtitle: '최종적 풍요' },
-    'th': { flag: 'flags/th.svg', name: 'ไทย', title: 'แถลงการณ์โลก', subtitle: 'ความอุดมสมบูรณ์ขั้นสุดท้าย' },
-    'vi': { flag: 'flags/vn.svg', name: 'Tiếng Việt', title: 'Tuyên Ngôn Thế Giới', subtitle: 'sự phong phú cuối cùng' },
-    'tr': { flag: 'flags/tr.svg', name: 'Türkçe', title: 'Dünya Manifestosu', subtitle: 'nihai bolluk' },
-    'fa': { flag: 'flags/ir.svg', name: 'فارسی', title: 'مانیفست جهانی', subtitle: 'فراوانی نهایی' },
-    'sw': { flag: 'flags/tz.svg', name: 'Kiswahili', title: 'Ilani ya Dunia', subtitle: 'wingi wa mwisho' },
-    'it': { flag: 'flags/it.svg', name: 'Italiano', title: 'Il Manifesto Mondiale', subtitle: 'l\'abbondanza definitiva' },
-    'pl': { flag: 'flags/pl.svg', name: 'Polski', title: 'Manifest Światowy', subtitle: 'ostateczna obfitość' },
-    'nl': { flag: 'flags/nl.svg', name: 'Nederlands', title: 'Het Wereldmanifest', subtitle: 'de definitieve overvloed' },
-    'ro': { flag: 'flags/ro.svg', name: 'Română', title: 'Manifestul Mondial', subtitle: 'abundența definitivă' },
-    'el': { flag: 'flags/gr.svg', name: 'Ελληνικά', title: 'Παγκόσμιο Μανιφέστο', subtitle: 'η οριστική αφθονία' },
-    'af': { flag: 'flags/za.svg', name: 'Afrikaans', title: 'Die Wêreldmanifest', subtitle: 'die definitiewe oorvloed' },
-    'zu': { flag: 'flags/za.svg', name: 'isiZulu', title: 'Imanifesto Yomhlaba', subtitle: 'ukuchichima okuphelele' },
-    'xh': { flag: 'flags/za.svg', name: 'isiXhosa', title: 'Imanifesto Yehlabathi', subtitle: 'ubuninzi obugqibeleleyo' },
-    'cs': { flag: 'flags/cz.svg', name: 'Čeština', title: 'Světový Manifest', subtitle: 'definitivní hojnost' },
-    'hu': { flag: 'flags/hu.svg', name: 'Magyar', title: 'Világkiáltvány', subtitle: 'a végső bőség' },
-    'he': { flag: 'flags/il.svg', name: 'עברית', title: 'המניפסט העולמי', subtitle: 'השפע המוחלט' },
-    'crs': { flag: 'flags/sc.svg', name: 'Seselwa', title: 'Manifest Lemonn', subtitle: 'labondans definitif' },
-    'se': { flag: 'flags/dsg.svg', name: 'Davvisámegiella', title: 'Máilmmi Manifesta', subtitle: 'loahpalaš valjisvuohta' },
-    'fit': { flag: 'flags/fit.svg', name: 'Meänkieli', title: 'Mailmanmanifesti', subtitle: 'lopullinen yltäkylläisyys' },
-    'no': { flag: 'flags/no.svg', name: 'Norsk', title: 'Verdensmanifestet', subtitle: 'den definitive overfloden' },
-    'fi': { flag: 'flags/fi.svg', name: 'Suomi', title: 'Maailmanmanifesti', subtitle: 'lopullinen yltäkylläisyys' },
-    'da': { flag: 'flags/dk.svg', name: 'Dansk', title: 'Verdensmanifestet', subtitle: 'den definitive overflod' },
-    'is': { flag: 'flags/is.svg', name: 'Íslenska', title: 'Heimsmanifestið', subtitle: 'endanleg gnægð' },
-    'fo': { flag: 'flags/fo.svg', name: 'Føroyskt', title: 'Heimsmanifestið', subtitle: 'endalig nøgd' }
-};
 
-// ============================================================
-// 2. SPRÅKVAL
-// ============================================================
-let authorNameFromText = "";
+    <script type="module">
+        import {
+            AVAILABLE, RELATED_FALLBACK, pickBestLanguage,
+            saveLanguage, populateLangSelect, setDocumentDirection
+        } from './js/lang.js';
+        import { getLangMeta } from './js/titles.js';
 
-function getPreferredLanguage() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const urlLang = urlParams.get('lang');
-    if (urlLang) {
-        const lc = urlLang.toLowerCase();
-        if (window._available && window._available.includes(lc)) {
-            try { localStorage.setItem('world-manifesto-lang', lc); } catch(e){}
-            return lc;
-        }
-        if (window._related && window._related[lc]) {
-            const mapped = window._related[lc];
-            try { localStorage.setItem('world-manifesto-lang', mapped); } catch(e){}
-            return mapped;
-        }
-        if (languages[lc]) return lc;
-    }
-    try {
-        const saved = localStorage.getItem('world-manifesto-lang');
-        if (saved && languages[saved]) return saved;
-    } catch(e){}
-    if (window._pick) {
-        const best = window._pick();
-        if (languages[best]) return best;
-    }
-    const browserLang = navigator.language || (navigator.languages && navigator.languages[0]) || 'en';
-    const langCode = browserLang.split('-')[0].toLowerCase();
-    if (languages[langCode]) return langCode;
-    return 'en';
-}
+        // ============================================================
+        // 1. SPRÅKVAL
+        // ============================================================
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLangParam = urlParams.get('lang');
 
-const lang = getPreferredLanguage();
-const langData = languages[lang] || languages['en'];
-const RTL_LANGS = ['ar', 'he', 'fa', 'ur'];
-document.documentElement.lang = lang;
-document.documentElement.dir = RTL_LANGS.includes(lang) ? 'rtl' : 'ltr';
-
-document.getElementById('flag-icon').src = langData.flag;
-document.getElementById('flag-icon').alt = langData.name;
-document.getElementById('language-label').textContent = langData.name;
-document.getElementById('book-title').textContent = langData.title;
-document.getElementById('book-subtitle').textContent = langData.subtitle;
-
-// ============================================================
-// 3. LADDA TEXT
-// ============================================================
-async function loadText() {
-    const bodyContent = document.getElementById('body-content');
-    try {
-        const response = await fetch(`lang_texts/${lang}.txt`);
-        if (!response.ok) throw new Error('Textfil saknas');
-        const text = await response.text();
-
-        const lines = text.split('\n');
-
-        let nonEmptySeen = 0;
-        let startIndex = 0;
-        let authorLineSeen = 0;
-        for (let i = 0; i < lines.length; i++) {
-            if (lines[i].trim() !== '') {
-                nonEmptySeen++;
-                if (nonEmptySeen === 3) {
-                    authorLineSeen = i;
-                }
-                if (nonEmptySeen === 4) {
-                    startIndex = i + 1;
-                    break;
-                }
+        function getPreferredLanguage() {
+            if (urlLangParam) {
+                const lc = urlLangParam.toLowerCase();
+                const mapped = RELATED_FALLBACK[lc] || lc;
+                if (AVAILABLE.includes(mapped)) return mapped;
+                if (AVAILABLE.includes(lc)) return lc;
             }
+            try {
+                const saved = localStorage.getItem('world-manifesto-lang');
+                if (saved && AVAILABLE.includes(saved)) return saved;
+            } catch(e) {}
+            return pickBestLanguage(AVAILABLE);
         }
-        if (authorLineSeen > 0) {
-            authorNameFromText = lines[authorLineSeen].trim();
-        }
 
-        let currentHtml = '';
-        let lastWasEmpty = false;
+        const lang = getPreferredLanguage();
+        saveLanguage(lang);
 
-        for (let i = startIndex; i < lines.length; i++) {
-            const raw = lines[i];
-            const trimmed = raw.trim();
+        const langData = getLangMeta(lang);
+        setDocumentDirection(lang);
 
-            if (trimmed === '') {
-                if (!lastWasEmpty) {
-                    currentHtml += `<p class="body-text">&nbsp;</p>`;
-                    lastWasEmpty = true;
+        document.getElementById('flag-icon').src = langData.flag;
+        document.getElementById('flag-icon').alt = langData.name;
+        document.getElementById('language-label').textContent = langData.name;
+        document.getElementById('book-title').textContent = langData.title;
+        document.getElementById('book-subtitle').textContent = langData.subtitle;
+
+        // ============================================================
+        // 2. FYLL DROPDOWN
+        // ============================================================
+        const select = document.getElementById('read-select');
+        populateLangSelect(select, { placeholder: 'Välj språk', selected: lang });
+
+        select.addEventListener('change', function(e) {
+            const val = e.target.value;
+            if (!val) return;
+            saveLanguage(val);
+            window.location.href = 'read.html?lang=' + val;
+        });
+
+        // ============================================================
+        // 3. LADDA TEXT
+        // ============================================================
+        let authorNameFromText = "";
+
+        async function loadText() {
+            const bodyContent = document.getElementById('body-content');
+            try {
+                const response = await fetch('lang_texts/' + lang + '.txt');
+                if (!response.ok) throw new Error('Textfil saknas');
+                const text = await response.text();
+
+                const lines = text.split('\n');
+
+                let nonEmptySeen = 0;
+                let startIndex = 0;
+                let authorLineSeen = 0;
+                for (let i = 0; i < lines.length; i++) {
+                    if (lines[i].trim() !== '') {
+                        nonEmptySeen++;
+                        if (nonEmptySeen === 3) authorLineSeen = i;
+                        if (nonEmptySeen === 4) {
+                            startIndex = i + 1;
+                            break;
+                        }
+                    }
                 }
-                continue;
-            }
-            lastWasEmpty = false;
+                if (authorLineSeen > 0) {
+                    authorNameFromText = lines[authorLineSeen].trim();
+                }
 
-            if (trimmed.match(/^=+$/)) {
-                currentHtml += `<hr class="separator-line">`;
-            } else if (trimmed.startsWith('"') && trimmed.endsWith('"')) {
-                currentHtml += `<p class="body-text" style="font-style: italic; text-align: center;">${trimmed}</p>`;
-            } else {
-                currentHtml += `<p class="body-text">${raw}</p>`;
+                let currentHtml = '';
+                let lastWasEmpty = false;
+
+                for (let i = startIndex; i < lines.length; i++) {
+                    const raw = lines[i];
+                    const trimmed = raw.trim();
+
+                    if (trimmed === '') {
+                        if (!lastWasEmpty) {
+                            currentHtml += '<p class="body-text">&nbsp;</p>';
+                            lastWasEmpty = true;
+                        }
+                        continue;
+                    }
+                    lastWasEmpty = false;
+
+                    if (trimmed.match(/^=+$/)) {
+                        currentHtml += '<hr class="separator-line">';
+                    } else if (trimmed.startsWith('"') && trimmed.endsWith('"')) {
+                        currentHtml += '<p class="body-text" style="font-style: italic; text-align: center;">' + trimmed + '</p>';
+                    } else {
+                        currentHtml += '<p class="body-text">' + raw + '</p>';
+                    }
+                }
+
+                bodyContent.innerHTML = currentHtml;
+
+            } catch (error) {
+                console.error('Fel vid laddning:', error);
+                bodyContent.innerHTML = '<p class="body-text">Text could not be loaded.</p>';
             }
         }
 
-        bodyContent.innerHTML = currentHtml;
+        loadText().then(function() {
+            if (typeof getAuthorHTML === 'function') {
+                document.getElementById('author-container').innerHTML = getAuthorHTML();
+            }
+        });
 
-    } catch (error) {
-        console.error('Fel vid laddning:', error);
-        bodyContent.innerHTML = '<p class="body-text">Text could not be loaded.</p>';
-    }
-}
-
-loadText().then(() => {
-    if (typeof getAuthorHTML === 'function') {
-        document.getElementById('author-container').innerHTML = getAuthorHTML();
-    }
-});
-
-if (typeof getCopyrightHTML === 'function') {
-    document.getElementById('copyright-container').innerHTML = getCopyrightHTML();
-}
+        if (typeof getCopyrightHTML === 'function') {
+            document.getElementById('copyright-container').innerHTML = getCopyrightHTML();
+        }
     </script>
 
 </body>
