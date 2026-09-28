@@ -166,7 +166,7 @@ export function pickBestLanguage(available = AVAILABLE, preferred = []) {
       return RELATED_FALLBACK[base];
     }
 
-    // 5. Sista utväg: använd Intl.Locale för att maximera
+    // 5. Sista utväg: använd Intl.Locale
     try {
       const max = new Intl.Locale(tag).maximize();
       if (available.includes(max.language)) return max.language;
