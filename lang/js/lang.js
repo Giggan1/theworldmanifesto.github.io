@@ -149,10 +149,10 @@ export function pickBestLanguage(available = AVAILABLE, preferred = []) {
     const tag = raw.toLowerCase().trim();
     if (!tag) continue;
 
-    // 1. Exakt match (t.ex. "sv" i listan)
+    // 1. Exakt match (t.ex. "sv")
     if (available.includes(tag)) return tag;
 
-    // 2. Specifik fallback FÖRST (t.ex. "zh-hk" → "yue", "en-us" → "en")
+    // 2. Specifik fallback FÖRST (t.ex. "zh-hk" → "yue")
     if (RELATED_FALLBACK[tag] && available.includes(RELATED_FALLBACK[tag])) {
       return RELATED_FALLBACK[tag];
     }
@@ -161,12 +161,12 @@ export function pickBestLanguage(available = AVAILABLE, preferred = []) {
     const base = tag.split('-')[0];
     if (available.includes(base)) return base;
 
-    // 4. Bas-fallback (t.ex. "nb" → "no")
+    // 4. Bas-fallback
     if (RELATED_FALLBACK[base] && available.includes(RELATED_FALLBACK[base])) {
       return RELATED_FALLBACK[base];
     }
 
-    // 5. Sista utväg: använd Intl.Locale
+    // 5. Sista utväg
     try {
       const max = new Intl.Locale(tag).maximize();
       if (available.includes(max.language)) return max.language;
