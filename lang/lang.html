@@ -239,100 +239,101 @@
         // ============================================================
         let authorNameFromText = "";
 
-        async function loadText() {
-            try {
-                const response = await fetch('lang_texts/' + lang + '.txt');
-                if (!response.ok) throw new Error('Textfil saknas');
-                const text = await response.text();
+async function loadText() {
+    try {
+        const response = await fetch('lang_texts/' + lang + '.txt');
+        if (!response.ok) throw new Error('Textfil saknas');
+        const text = await response.text();
 
-                const lines = text.split('\n');
-                const nonEmptyLines = lines.filter(function(line) { return line.trim() !== ''; });
-                const bodyContent = document.getElementById('body-content');
-                let currentHtml = '';
+        const lines = text.split('\n');
+        const nonEmptyLines = lines.filter(function(line) { return line.trim() !== ''; });
+        const bodyContent = document.getElementById('body-content');
+        let currentHtml = '';
 
-                let tableRows = [];
-                let inTable = false;
-                let sepCount = 0;
+        let tableRows = [];
+        let inTable = false;
+        let separatorsSeen = 0;
 
-                if (nonEmptyLines.length >= 4) {
-                    authorNameFromText = nonEmptyLines[3].trim();
-                }
-
-                for (let i = 4; i < nonEmptyLines.length; i++) {
-                    let rawLine = nonEmptyLines[i];
-                    let line = rawLine.trim();
-
-                    if (line.match(/^=+$/)) {
-                        sepCount++;
-                        if (sepCount <= 2) continue;
-                        currentHtml += '<hr class="separator-line">';
-                        continue;
-                    }
-                    if (sepCount < 2) continue;
-
-                    if (line === '') {
-                        if (inTable && tableRows.length > 0) {
-                            currentHtml += buildTable(tableRows);
-                            tableRows = [];
-                            inTable = false;
-                        }
-                        continue;
-                    }
-
-                    const pipeCount = (line.match(/\|/g) || []).length;
-                    const tabCount = (line.match(/\t/g) || []).length;
-                    const isTableRow = (pipeCount >= 2 || tabCount >= 2);
-
-                    if (isTableRow) {
-                        if (!inTable) {
-                            inTable = true;
-                            tableRows = [];
-                        }
-                        tableRows.push(line);
-                        continue;
-                    }
-
-                    if (inTable && tableRows.length > 0) {
-                        currentHtml += buildTable(tableRows);
-                        tableRows = [];
-                        inTable = false;
-                    }
-
-                    const lower = line.toLowerCase();
-                    const tocKeywords = ['table of contents', 'innehållsförteckning', 'innholdsfortegnelse', 'indholdsfortegnelse', 'sisällysluettelo', 'table des matières', 'inhaltsverzeichnis', 'índice', 'indice', 'contenidos', 'sommario', 'περιεχόμενα', 'содержание', 'содржина', 'spis treści', 'obsah', 'tartalomjegyzék', 'cuprins', 'inhoudsopgave', 'sisukord', 'saturs', 'turinys', 'kazalo', 'sadržaj', 'зміст', 'fihirist', 'toc', 'daftar isi', '목차', '目次', '目录', '目錄', 'สารบัญ', 'mục lục', 'içindekiler', 'فهرست', 'محتويات', 'תוכן עניינים', 'अनुक्रमणिका', 'সূচিপত্র', 'taaloga', 'dilolo', 'okuqukethwe', 'yandikimo', 'efnisyfirlit', 'innihaldsyvirlit'];
-                    let isToc = false;
-                    for (let k = 0; k < tocKeywords.length; k++) {
-                        if (lower.includes(tocKeywords[k])) { isToc = true; break; }
-                    }
-                    if (isToc) {
-                        currentHtml += '<h2 class="toc-title">' + line + '</h2><div style="height:0.8em"></div>';
-                        continue;
-                    }
-
-                    if (line.startsWith('"') && line.endsWith('"')) {
-                        currentHtml += '<p class="body-text" style="font-style: italic; text-align: center;">' + line + '</p>';
-                        continue;
-                    }
-
-                    if (line === line.toUpperCase() && line.length > 3 && !line.includes(' ')) {
-                        currentHtml += '<p class="body-text">' + line + '</p>';
-                        continue;
-                    }
-
-                    currentHtml += '<p class="body-text">' + line + '</p>';
-                }
-
-                if (inTable && tableRows.length > 0) {
-                    currentHtml += buildTable(tableRows);
-                }
-
-                bodyContent.innerHTML = currentHtml;
-
-            } catch (error) {
-                console.error('Fel vid laddning:', error);
-                document.getElementById('body-content').innerHTML = '<p class="body-text">Text could not be loaded.</p>';
-            }
+        if (nonEmptyLines.length >= 3) {
+            authorNameFromText = nonEmptyLines[2].trim();
         }
+
+        // Loopen börjar på rad 4 (index 3) = separator 1
+        for (let i = 3; i < nonEmptyLines.length; i++) {
+            const rawLine = nonEmptyLines[i];
+            const line = rawLine.trim();
+
+            // Separatorhantering
+            if (line.match(/^=+$/)) {
+                separatorsSeen++;
+                if (separatorsSeen <= 2) continue;
+                currentHtml += '<hr class="separator-line">';
+                continue;
+            }
+
+            // Hoppa över allt mellan separator 1 och separator 2
+            // (First Edition, ©-raden och eventuella andra rader)
+            if (separatorsSeen === 1) continue;
+
+            // Tabelldetektering
+            const pipeCount = (line.match(/\|/g) || []).length;
+            const tabCount = (line.match(/\t/g) || []).length;
+            const isTableRow = (pipeCount >= 2 || tabCount >= 2);
+
+            if (isTableRow) {
+                if (!inTable) {
+                    inTable = true;
+                    tableRows = [];
+                }
+                tableRows.push(line);
+                continue;
+            }
+
+            if (inTable && tableRows.length > 0) {
+                currentHtml += buildTable(tableRows);
+                tableRows = [];
+                inTable = false;
+            }
+
+            // Innehållsförteckning
+            const lower = line.toLowerCase();
+            const tocKeywords = ['table of contents', 'innehållsförteckning', 'innholdsfortegnelse', 'indholdsfortegnelse', 'sisällysluettelo', 'table des matières', 'inhaltsverzeichnis', 'índice', 'indice', 'contenidos', 'sommario', 'περιεχόμενα', 'содержание', 'содржина', 'spis treści', 'obsah', 'tartalomjegyzék', 'cuprins', 'inhoudsopgave', 'sisukord', 'saturs', 'turinys', 'kazalo', 'sadržaj', 'зміст', 'fihirist', 'toc', 'daftar isi', '목차', '目次', '目录', '目錄', 'สารบัญ', 'mục lục', 'içindekiler', 'فهرست', 'محتويات', 'תוכן עניינים', 'अनुक्रमणिका', 'সূচিপত্র', 'taaloga', 'dilolo', 'okuqukethwe', 'yandikimo', 'efnisyfirlit', 'innihaldsyvirlit'];
+            let isToc = false;
+            for (let k = 0; k < tocKeywords.length; k++) {
+                if (lower.includes(tocKeywords[k])) { isToc = true; break; }
+            }
+            if (isToc) {
+                currentHtml += '<h2 class="toc-title">' + line + '</h2><div style="height:0.8em"></div>';
+                continue;
+            }
+
+            // Citat
+            if (line.startsWith('"') && line.endsWith('"')) {
+                currentHtml += '<p class="body-text" style="font-style: italic; text-align: center;">' + line + '</p>';
+                continue;
+            }
+
+            // Rubriker i versaler utan mellanslag
+            if (line === line.toUpperCase() && line.length > 3 && !line.includes(' ')) {
+                currentHtml += '<p class="body-text">' + line + '</p>';
+                continue;
+            }
+
+            // Vanlig text
+            currentHtml += '<p class="body-text">' + line + '</p>';
+        }
+
+        if (inTable && tableRows.length > 0) {
+            currentHtml += buildTable(tableRows);
+        }
+
+        bodyContent.innerHTML = currentHtml;
+
+    } catch (error) {
+        console.error('Fel vid laddning:', error);
+        document.getElementById('body-content').innerHTML = '<p class="body-text">Text could not be loaded.</p>';
+    }
+}
 
         loadText().then(function() {
             if (typeof getAuthorHTML === 'function') {
