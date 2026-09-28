@@ -85,7 +85,7 @@ const RELATED_FALLBACK = {
   "xh-za": "xh"
 };
 
-const AVAILABLE = ['sv','en','zh','hi','es','fr','ar','id','bn','pt','ru','uk','bg','ur','ja','fil','de','ko','th','vi','tr','fa','sw','it','pl','nl','ro','el','af','zu','xh','cs','hu','he','crs','se','fit','no','fi','da','is','fo'];
+const AVAILABLE = ['sv','en','zh','yue','hi','bn','ur','pa','id','jv','es','fr','de','ar','pt','ru','uk','bg','ja','fil','ko','th','vi','tr','fa','sw','it','pl','nl','ro','el','hu','he','crs','no','se','fit','da','is','fo','cs','af','zu','xh','fi'];
 
 
 function pickBestLanguage(available = AVAILABLE, preferred = []) {
