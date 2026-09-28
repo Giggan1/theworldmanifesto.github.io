@@ -158,64 +158,56 @@
         // ============================================================
         let authorNameFromText = "";
 
-        async function loadText() {
-            const bodyContent = document.getElementById('body-content');
-            try {
-                const response = await fetch('lang_texts/' + lang + '.txt');
-                if (!response.ok) throw new Error('Textfil saknas');
-                const text = await response.text();
+async function loadText() {
+    const bodyContent = document.getElementById('body-content');
+    try {
+        const response = await fetch('lang_texts/' + lang + '.txt');
+        if (!response.ok) throw new Error('Textfil saknas');
+        const text = await response.text();
 
-                const lines = text.split('\n');
+        const lines = text.split('\n');
+        const nonEmptyLines = lines.filter(function(line) { return line.trim() !== ''; });
 
-                let nonEmptySeen = 0;
-                let startIndex = 0;
-                let authorLineSeen = 0;
-                for (let i = 0; i < lines.length; i++) {
-                    if (lines[i].trim() !== '') {
-                        nonEmptySeen++;
-                        if (nonEmptySeen === 3) authorLineSeen = i;
-                        if (nonEmptySeen === 4) {
-                            startIndex = i + 1;
-                            break;
-                        }
-                    }
-                }
-                if (authorLineSeen > 0) {
-                    authorNameFromText = lines[authorLineSeen].trim();
-                }
+        // Författarnamnet är tredje icke-tomma raden
+        if (nonEmptyLines.length >= 3) {
+            authorNameFromText = nonEmptyLines[2].trim();
+        }
 
-                let currentHtml = '';
-                let lastWasEmpty = false;
+        let currentHtml = '';
+        let separatorsSeen = 0;
 
-                for (let i = startIndex; i < lines.length; i++) {
-                    const raw = lines[i];
-                    const trimmed = raw.trim();
+        // Loopen börjar på rad 4 (index 3) = separator 1
+        for (let i = 3; i < nonEmptyLines.length; i++) {
+            const raw = nonEmptyLines[i];
+            const trimmed = raw.trim();
 
-                    if (trimmed === '') {
-                        if (!lastWasEmpty) {
-                            currentHtml += '<p class="body-text">&nbsp;</p>';
-                            lastWasEmpty = true;
-                        }
-                        continue;
-                    }
-                    lastWasEmpty = false;
+            // Separatorhantering
+            if (trimmed.match(/^=+$/)) {
+                separatorsSeen++;
+                if (separatorsSeen <= 2) continue;   // hoppa över de 2 första separatorerna
+                currentHtml += '<hr class="separator-line">';
+                continue;
+            }
 
-                    if (trimmed.match(/^=+$/)) {
-                        currentHtml += '<hr class="separator-line">';
-                    } else if (trimmed.startsWith('"') && trimmed.endsWith('"')) {
-                        currentHtml += '<p class="body-text" style="font-style: italic; text-align: center;">' + trimmed + '</p>';
-                    } else {
-                        currentHtml += '<p class="body-text">' + raw + '</p>';
-                    }
-                }
+            // Hoppa över allt mellan separator 1 och separator 2
+            // (First Edition, ©-raden och eventuella tomrader)
+            if (separatorsSeen === 1) continue;
 
-                bodyContent.innerHTML = currentHtml;
-
-            } catch (error) {
-                console.error('Fel vid laddning:', error);
-                bodyContent.innerHTML = '<p class="body-text">Text could not be loaded.</p>';
+            // Rendera innehållet
+            if (trimmed.startsWith('"') && trimmed.endsWith('"')) {
+                currentHtml += '<p class="body-text" style="font-style: italic; text-align: center;">' + trimmed + '</p>';
+            } else {
+                currentHtml += '<p class="body-text">' + raw + '</p>';
             }
         }
+
+        bodyContent.innerHTML = currentHtml;
+
+    } catch (error) {
+        console.error('Fel vid laddning:', error);
+        bodyContent.innerHTML = '<p class="body-text">Text could not be loaded.</p>';
+    }
+}
 
         loadText().then(function() {
             if (typeof getAuthorHTML === 'function') {
