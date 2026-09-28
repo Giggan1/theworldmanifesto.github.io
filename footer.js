@@ -62,7 +62,7 @@ const RELATED_FALLBACK = {
   "ur-in": "ur", "ur-pk": "ur",
   "vi-vn": "vi",
   "wuu": "zh", "yue": "yue", "yue-hk": "yue",
-  "zh-cn": "zh", "zh-hans": "zh", "zh-hant": "zh", "zh-hk": "zh", "zh-mo": "zh", "zh-sg": "zh", "zh-tw": "zh",
+  "zh-cn": "zh", "zh-hans": "zh", "zh-hant": "zh", "zh-hk": "yue", "zh-mo": "yue", "yue": "yue", "yue-hk": "yue","zh-sg": "zh", "zh-tw": "zh",
   "wa": "fr", "wa-be": "fr", "wln": "fr",
   "li": "nl", "li-be": "nl", "li-nl": "nl", "lim": "nl",
   "lb": "de", "lb-lu": "de",
@@ -73,7 +73,7 @@ const RELATED_FALLBACK = {
   "xh-za": "xh"
 };
 
-const AVAILABLE = ['sv','en','fi','zh','yue','hi','bn','ur','pa','id','jv','es','fr','de','ar','pt','ru','uk','bg','ja','fil','ko','th','vi','tr','fa','sw','it','pl','nl','ro','el','hu','he','crs','no','se','fit','da','is','fo','cs','af','zu','xh'];
+const AVAILABLE = ['sv','en','zh','yue','hi','bn','ur','pa','id','jv','es','fr','de','ar','pt','ru','uk','bg','ja','fil','ko','th','vi','tr','fa','sw','it','pl','nl','ro','el','hu','he','crs','no','se','fit','da','is','fo','cs','af','zu','xh','fi'];
 
 
 function pickBestLanguage(available = AVAILABLE, preferred = []) {
