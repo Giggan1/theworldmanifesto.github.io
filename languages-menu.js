@@ -1,26 +1,7 @@
 // languages-menu.js
-// Fyller en <select>-dropdown med alla språk från languages-list.js.
+// Tunt omslag: exponerar populateLangSelect och setDocumentDirection globalt.
 
-window.populateLangSelect = function(selectEl) {
-    if (!selectEl) return;
-    if (!window.ALL_LANGUAGES) {
-        console.error('languages-list.js måste laddas före languages-menu.js');
-        return;
-    }
-    selectEl.innerHTML = '';
-    window.ALL_LANGUAGES.forEach(function(item) {
-        var code = item[0];
-        var name = item[1];
-        var en = item[2];
-        var opt = document.createElement('option');
-        opt.value = code;
-        opt.textContent = en ? name + ' (' + en + ')' : name;
-        selectEl.appendChild(opt);
-    });
-};
+import { populateLangSelect, setDocumentDirection } from './lang/js/lang.js';
 
-window.setDocumentDirection = function(langCode) {
-    if (!window.RTL_LANGS) return;
-    document.documentElement.dir = window.RTL_LANGS.indexOf(langCode) !== -1 ? 'rtl' : 'ltr';
-    document.documentElement.lang = langCode;
-};
+window.populateLangSelect = populateLangSelect;
+window.setDocumentDirection = setDocumentDirection;
