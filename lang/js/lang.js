@@ -148,11 +148,25 @@ export function pickBestLanguage(available = AVAILABLE, preferred = []) {
   for (const raw of prefs) {
     const tag = raw.toLowerCase().trim();
     if (!tag) continue;
+
+    // 1. Exakt match (t.ex. "sv" i listan)
     if (available.includes(tag)) return tag;
+
+    // 2. Specifik fallback FÖRST (t.ex. "zh-hk" → "yue", "en-us" → "en")
+    if (RELATED_FALLBACK[tag] && available.includes(RELATED_FALLBACK[tag])) {
+      return RELATED_FALLBACK[tag];
+    }
+
+    // 3. Bas-match (t.ex. "zh-hk" → "zh") — bara om ingen specifik fallback finns
     const base = tag.split('-')[0];
     if (available.includes(base)) return base;
-    if (RELATED_FALLBACK[tag] && available.includes(RELATED_FALLBACK[tag])) return RELATED_FALLBACK[tag];
-    if (RELATED_FALLBACK[base] && available.includes(RELATED_FALLBACK[base])) return RELATED_FALLBACK[base];
+
+    // 4. Bas-fallback (t.ex. "nb" → "no")
+    if (RELATED_FALLBACK[base] && available.includes(RELATED_FALLBACK[base])) {
+      return RELATED_FALLBACK[base];
+    }
+
+    // 5. Sista utväg: använd Intl.Locale för att maximera
     try {
       const max = new Intl.Locale(tag).maximize();
       if (available.includes(max.language)) return max.language;
