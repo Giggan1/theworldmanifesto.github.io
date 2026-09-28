@@ -48,19 +48,58 @@ const COPYRIGHT_TEXTS = {
     'fil': '© 2026 Sven Yngerstedt. Nakalaan ang lahat ng karapatan.'
 };
 
+// Minimal RELATED_FALLBACK - bara de viktigaste mappningarna
+const COPYRIGHT_FALLBACK = {
+    'zh-hk': 'yue',
+    'zh-mo': 'yue',
+    'zh-cn': 'zh',
+    'zh-sg': 'zh',
+    'zh-tw': 'zh',
+    'zh-hans': 'zh',
+    'zh-hant': 'zh',
+    'yue-hk': 'yue',
+    'nb': 'no',
+    'nn': 'no',
+    'nb-no': 'no',
+    'nn-no': 'no',
+    'tl': 'fil',
+    'tl-ph': 'fil',
+    'en-us': 'en',
+    'en-gb': 'en',
+    'pt-br': 'pt',
+    'pt-pt': 'pt'
+};
+
 function getCopyrightHTML() {
-    // Hämta språk från URL, annars webbläsarens språk, annars engelska
     const urlParams = new URLSearchParams(window.location.search);
     const urlLang = urlParams.get('lang');
-    
-    let lang = 'en';
+
+    // Prioritet 1: URL
     if (urlLang) {
-        lang = urlLang.toLowerCase().split('-')[0];
-    } else if (typeof navigator !== 'undefined') {
-        const nav = (navigator.language || (navigator.languages && navigator.languages[0]) || 'en').toLowerCase();
-        lang = nav.split('-')[0];
+        const lc = urlLang.toLowerCase();
+        const mapped = COPYRIGHT_FALLBACK[lc] || lc.split('-')[0];
+        const text = COPYRIGHT_TEXTS[mapped] || COPYRIGHT_TEXTS['en'];
+        return `<p class="copyright">${text}</p>`;
     }
-    
-    const text = COPYRIGHT_TEXTS[lang] || COPYRIGHT_TEXTS['en'];
-    return `<p class="copyright">${text}</p>`;
+
+    // Prioritet 2: localStorage
+    try {
+        const saved = localStorage.getItem('world-manifesto-lang');
+        if (saved) {
+            const text = COPYRIGHT_TEXTS[saved] || COPYRIGHT_TEXTS['en'];
+            return `<p class="copyright">${text}</p>`;
+        }
+    } catch (e) {}
+
+    // Prioritet 3: Webbläsarens språk
+    if (typeof navigator !== 'undefined') {
+        const nav = (navigator.language || (navigator.languages && navigator.languages[0]) || 'en').toLowerCase();
+        const base = nav.split('-')[0];
+        const mapped = COPYRIGHT_FALLBACK[nav] || base;
+        const text = COPYRIGHT_TEXTS[mapped] || COPYRIGHT_TEXTS['en'];
+        return `<p class="copyright">${text}</p>`;
+    }
+
+    // Fallback
+    return `<p class="copyright">${COPYRIGHT_TEXTS['en']}</p>`;
 }
