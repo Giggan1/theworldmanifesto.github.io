@@ -149,15 +149,15 @@ export function pickBestLanguage(available = AVAILABLE, preferred = []) {
     const tag = raw.toLowerCase().trim();
     if (!tag) continue;
 
-    // 1. Exakt match (t.ex. "sv")
+    // 1. Exakt match
     if (available.includes(tag)) return tag;
 
-    // 2. Specifik fallback FÖRST (t.ex. "zh-hk" → "yue")
+    // 2. Specifik fallback FÖRST (zh-hk → yue, en-us → en, osv.)
     if (RELATED_FALLBACK[tag] && available.includes(RELATED_FALLBACK[tag])) {
       return RELATED_FALLBACK[tag];
     }
 
-    // 3. Bas-match (t.ex. "zh-hk" → "zh") — bara om ingen specifik fallback finns
+    // 3. Bas-match — bara om ingen specifik fallback finns
     const base = tag.split('-')[0];
     if (available.includes(base)) return base;
 
