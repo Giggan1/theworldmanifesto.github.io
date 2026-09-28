@@ -1,13 +1,73 @@
 // ============================================================
-// SPRÅKHANTERING — central AVAILABLE + RELATED_FALLBACK
+// lang/js/lang.js
+// Central språkdata för hela sajten.
 // ============================================================
 
-export const AVAILABLE = [
-  'sv','en','zh','yue','hi','es','fr','ar','id','jv','bn','pt','ru','uk','bg',
-  'ur','pa','ja','fil','de','ko','th','vi','tr','fa','sw','it','pl','nl','ro',
-  'el','af','zu','xh','cs','hu','he','crs','se','fit','no','fi','da','is','fo'
+// ------------------------------------------------------------
+// 1. ALLA SPRÅK
+// [kod, visningsnamn, engelskt namn (endast för icke-latinska)]
+// ------------------------------------------------------------
+export const ALL_LANGUAGES = [
+  ['sv', 'Svenska'],
+  ['en', 'English'],
+  ['zh', '中文', 'Chinese'],
+  ['yue', '粵語', 'Cantonese'],
+  ['hi', 'हिंदी', 'Hindi'],
+  ['bn', 'বাংলা', 'Bengali'],
+  ['ur', 'اردو', 'Urdu'],
+  ['pa', 'ਪੰਜਾਬੀ', 'Punjabi'],
+  ['id', 'Bahasa Indonesia'],
+  ['jv', 'Basa Jawa', 'Javanese'],
+  ['es', 'Español'],
+  ['fr', 'Français'],
+  ['de', 'Deutsch'],
+  ['ar', 'العربية', 'Arabic'],
+  ['pt', 'Português'],
+  ['ru', 'Русский', 'Russian'],
+  ['uk', 'Українська', 'Ukrainian'],
+  ['bg', 'Български', 'Bulgarian'],
+  ['ja', '日本語', 'Japanese'],
+  ['fil', 'Filipino'],
+  ['ko', '한국어', 'Korean'],
+  ['th', 'ไทย', 'Thai'],
+  ['vi', 'Tiếng Việt'],
+  ['tr', 'Türkçe'],
+  ['fa', 'فارسی', 'Persian'],
+  ['sw', 'Kiswahili'],
+  ['it', 'Italiano'],
+  ['pl', 'Polski'],
+  ['nl', 'Nederlands'],
+  ['ro', 'Română'],
+  ['el', 'Ελληνικά', 'Greek'],
+  ['hu', 'Magyar'],
+  ['he', 'עברית', 'Hebrew'],
+  ['crs', 'Seselwa'],
+  ['no', 'Norsk'],
+  ['se', 'Davvisámegiella'],
+  ['fit', 'Meänkieli'],
+  ['da', 'Dansk'],
+  ['is', 'Íslenska'],
+  ['fo', 'Føroyskt'],
+  ['cs', 'Čeština'],
+  ['af', 'Afrikaans'],
+  ['zu', 'isiZulu'],
+  ['xh', 'isiXhosa'],
+  ['fi', 'Suomi']
 ];
 
+// ------------------------------------------------------------
+// 2. TILLGÄNGLIGA SPRÅK (för vilka innehåll finns)
+// ------------------------------------------------------------
+export const AVAILABLE = ALL_LANGUAGES.map(function(item) { return item[0]; });
+
+// ------------------------------------------------------------
+// 3. RTL-SPRÅK
+// ------------------------------------------------------------
+export const RTL_LANGS = ['ar', 'he', 'fa', 'ur'];
+
+// ------------------------------------------------------------
+// 4. FALLBACK-MAPPNING (BCP-47 → baskod)
+// ------------------------------------------------------------
 export const RELATED_FALLBACK = {
   "af-za": "af", "af-na": "af",
   "an": "es", "an-es": "es",
@@ -73,9 +133,9 @@ export const RELATED_FALLBACK = {
   "xh-za": "xh"
 };
 
-// ============================================================
-// HJÄLPFUNKTIONER
-// ============================================================
+// ------------------------------------------------------------
+// 5. HJÄLPFUNKTIONER
+// ------------------------------------------------------------
 
 export function pickBestLanguage(available = AVAILABLE, preferred = []) {
   const prefs = (preferred.length
@@ -83,7 +143,7 @@ export function pickBestLanguage(available = AVAILABLE, preferred = []) {
     : (typeof navigator !== 'undefined'
         ? (navigator.languages || [navigator.language])
         : [])
-  ).map(s => String(s).toLowerCase());
+  ).map(function(s) { return String(s).toLowerCase(); });
 
   for (const raw of prefs) {
     const tag = raw.toLowerCase().trim();
@@ -110,7 +170,30 @@ export function getSavedLanguage() {
 }
 
 export function setDocumentDirection(lang) {
-  const RTL_LANGS = ['ar', 'he', 'fa', 'ur'];
   document.documentElement.lang = lang;
   document.documentElement.dir = RTL_LANGS.includes(lang) ? 'rtl' : 'ltr';
+}
+
+export function populateLangSelect(selectEl, options) {
+  if (!selectEl) return;
+  options = options || {};
+  const placeholder = options.placeholder || '';
+  const selected = options.selected || '';
+  selectEl.innerHTML = '';
+  if (placeholder) {
+    const opt0 = document.createElement('option');
+    opt0.value = '';
+    opt0.textContent = placeholder;
+    selectEl.appendChild(opt0);
+  }
+  ALL_LANGUAGES.forEach(function(item) {
+    const code = item[0];
+    const name = item[1];
+    const en = item[2];
+    const opt = document.createElement('option');
+    opt.value = code;
+    opt.textContent = en ? name + ' / ' + en : name;
+    if (code === selected) opt.selected = true;
+    selectEl.appendChild(opt);
+  });
 }
