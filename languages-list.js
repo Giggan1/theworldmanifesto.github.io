@@ -5,6 +5,7 @@
 window.ALL_LANGUAGES = [
     ['en', 'English'],
     ['zh', '中文', 'Chinese'],
+    ['yue', '粵語', 'Cantonese'],
     ['hi', 'हिंदी', 'Hindi'],
     ['es', 'Español'],
     ['fr', 'Français'],
@@ -13,7 +14,9 @@ window.ALL_LANGUAGES = [
     ['pt', 'Português'],
     ['ru', 'Русский', 'Russian'],
     ['ur', 'اردو', 'Urdu'],
+    ['pa', 'ਪੰਜਾਬੀ', 'Punjabi'],
     ['id', 'Bahasa Indonesia'],
+    ['jv', 'Basa Jawa', 'Javanese'],
     ['de', 'Deutsch'],
     ['ja', '日本語', 'Japanese'],
     ['sw', 'Kiswahili'],
