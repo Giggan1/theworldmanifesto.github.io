@@ -122,7 +122,7 @@ export const RELATED_FALLBACK = {
   "ur-in": "ur", "ur-pk": "ur",
   "vi-vn": "vi",
   "wuu": "zh", "yue": "yue", "yue-hk": "yue",
-  "zh-cn": "zh", "zh-hans": "zh", "zh-hant": "zh", "zh-hk": "zh", "zh-mo": "zh", "zh-sg": "zh", "zh-tw": "zh",
+  "zh-cn": "zh", "zh-hans": "zh", "zh-hant": "zh", "zh-hk": "yue", "zh-mo": "yue", "zh-sg": "zh", "zh-tw": "zh",
   "wa": "fr", "wa-be": "fr", "wln": "fr",
   "li": "nl", "li-be": "nl", "li-nl": "nl", "lim": "nl",
   "lb": "de", "lb-lu": "de",
