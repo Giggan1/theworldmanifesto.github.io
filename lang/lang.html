@@ -324,7 +324,7 @@ function getPreferredLanguage() {
 }
 
 const lang = getPreferredLanguage();
-const langData = languages[lang];
+const langData = languages[lang] || languages['en'];
 const RTL_LANGS = ['ar', 'he', 'fa', 'ur'];
 document.documentElement.lang = lang;
 document.documentElement.dir = RTL_LANGS.includes(lang) ? 'rtl' : 'ltr';
