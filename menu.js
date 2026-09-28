@@ -113,6 +113,7 @@ function pickBestLanguage(available = AVAILABLE, preferred = []) {
     // --- MAPPING FÖR FLAGGBILDER (från ../lang/flags/) ---
     const flagMapping = {
         'sv': 'se.svg', 'en': 'gb.svg', 'fi': 'fi.svg', 'zh': 'cn.svg',
+        'yue': 'hk.svg', 'jv': 'id.svg', 'pa': 'pk.svg',
         'hi': 'in.svg', 'es': 'es.svg', 'fr': 'fr.svg', 'de': 'de.svg',
         'ar': 'sa.svg', 'id': 'id.svg', 'bn': 'bd.svg', 'pt': 'pt.svg',
         'ru': 'ru.svg', 'uk': 'ua.svg', 'bg': 'bg.svg', 'ur': 'pk.svg',
