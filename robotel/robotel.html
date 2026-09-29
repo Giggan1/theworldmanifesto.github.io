@@ -424,6 +424,7 @@
     // 4. SPRÅKVAL — med RELATED_FALLBACK före bas-match
     // ============================================================
         const browserLang = pickBestLanguage();
+    document.documentElement.lang = browserLang;
     const t = translations[browserLang] || translations['en'];
 
     // ============================================================
