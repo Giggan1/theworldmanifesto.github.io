@@ -92,7 +92,7 @@
 
     <!-- ROBOTEL CHAT SKRIPT -->
     <script type="module">
-    import { AVAILABLE, RELATED_FALLBACK, pickBestLanguage } from '../lang/js/lang.js';
+    import { AVAILABLE, pickBestLanguage, setDocumentDirection } from '../lang/js/lang.js';
     // ============================================================
     // 1. ÖVERSÄTTNINGAR FÖR ALLA TEXTER
     // ============================================================
@@ -423,9 +423,13 @@
     // ============================================================
     // 4. SPRÅKVAL — med RELATED_FALLBACK före bas-match
     // ============================================================
-        const browserLang = pickBestLanguage();
-    document.documentElement.lang = browserLang;
-    const t = translations[browserLang] || translations['en'];
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLangParam = urlParams.get('lang');
+        const currentLang = urlLangParam
+            ? pickBestLanguage(AVAILABLE, [urlLangParam])
+            : pickBestLanguage();
+        setDocumentDirection(currentLang);
+        const t = translations[currentLang] || translations['en'];
 
     // ============================================================
     // 5. UPPDATERA ALLA TEXTER
@@ -441,7 +445,7 @@
     // ============================================================
     // 6. CHATT-FUNKTIONER
     // ============================================================
-    let currentLanguage = navigator.language || 'sv-SE';
+    let currentLanguage = currentLang;
 
     const inputEl = document.getElementById('user-input');
     const boxEl = document.getElementById('chat-box');
@@ -503,8 +507,8 @@
     }
 
     function clearChat() {
-        currentLanguage = navigator.language || 'sv-SE';
-        const currentGreeting = translations[browserLang]?.greeting || translations['en'].greeting;
+        currentLanguage = currentLang;
+        const currentGreeting = translations[currentLang]?.greeting || translations['en'].greeting;
         boxEl.innerHTML = `
     <div id="greeting-message" style="background: #f1f5f9; color: #1e293b; padding: 10px 14px; border-radius: 8px; align-self: flex-start; max-width: 80%;">
         <img src="../menu_icons/tropics.png" alt="Tropics" class="icon">
@@ -517,6 +521,9 @@
             return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m];
         });
     }
+        // Keep the existing inline button handlers working with this module script.
+    window.sendMessage = sendMessage;
+    window.clearChat = clearChat;
     </script>
 
     <script type="module" src="../menu.js"></script>
