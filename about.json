@@ -1,1 +1,268 @@
-
+{
+  "SV": {
+    "title": "Varför? – Världsmanifestet",
+    "description": "Några milstolpar i mänsklighetens tekniska utveckling — och varför Världsmanifestet finns.",
+    "backLink": "← Tillbaka till Världsmanifestet",
+    "heading": "Varför?",
+    "section1Title": "⚙️ Historiska milstolpar",
+    "timeline": [
+      { "year": "År 1698", "description": "Ångmaskinen uppfinns och bryter för första gången mänsklighetens absoluta beroende av muskelkraft och dragdjur." },
+      { "year": "År 1750", "description": "Den industriella revolutionen inleds i England och skalar upp mekanisk massproduktion." },
+      { "year": "År 1800", "description": "Det kemiska batteriet uppfinns (och finns kommersiellt tillgängligt i stor skala i USA år 1896)." },
+      { "year": "År 1801", "description": "Den automatiserade vävstolen uppfinns – världens första programmerbara mekaniska anordning." },
+      { "year": "År 1809", "description": "Elektriskt ljus uppfinns." },
+      { "year": "År 1831", "description": "Generatorn uppfinns och möjliggör omvandling av rörelse till kontrollerbar elektrisk energi." },
+      { "year": "År 1859", "description": "Det laddningsbara batteriet uppfinns, vilket sluter cirkeln för lagringsbar och mobil drivkraft." },
+      { "year": "År 1954", "description": "Det första offentliga elnätet med kärnkraft tas i bruk." }
+    ],
+    "section2Title": "❓ Varför finns Världsmanifestet?",
+    "paragraph": "Det är en färdig plattform för den som vill bygga något nytt — ett parti, en rörelse, en reform. Manifestet kräver en ny form av internationell ekonomisk lagstiftning: en som erkänner teknikens mognad, avskaffar skuldsystemet och ger alla människor rätt till det överflöd som maskinerna skapar."
+  },
+  "EN": {
+    "title": "Why? – The World Manifesto",
+    "description": "Some milestones in humanity's technological development — and why The World Manifesto exists.",
+    "backLink": "← Back to The World Manifesto",
+    "heading": "Why?",
+    "section1Title": "⚙️ Historical Milestones",
+    "timeline": [
+      { "year": "Year 1698", "description": "The steam engine is invented, breaking humanity's absolute dependence on muscle power and draft animals for the first time." },
+      { "year": "Year 1750", "description": "The industrial revolution begins in England and scales up mechanical mass production." },
+      { "year": "Year 1800", "description": "The chemical battery is invented (and is commercially available on a large scale in the USA in 1896)." },
+      { "year": "Year 1801", "description": "The automated loom is invented – the world's first programmable mechanical device." },
+      { "year": "Year 1809", "description": "Electric light is invented." },
+      { "year": "Year 1831", "description": "The generator is invented and enables the conversion of movement into controllable electrical energy." },
+      { "year": "Year 1859", "description": "The rechargeable battery is invented, closing the circle for storable and mobile motive power." },
+      { "year": "Year 1954", "description": "The first public nuclear power grid is put into use." }
+    ],
+    "section2Title": "❓ Why does The World Manifesto exist?",
+    "paragraph": "It is a ready-made platform for anyone who wants to build something new — a party, a movement, a reform. The manifesto demands a new form of international economic legislation: one that recognizes the maturity of technology, abolishes the debt system, and gives all people the right to the abundance that machines create."
+  },
+  "ZH": {
+    "title": "为什么？ – 世界宣言",
+    "description": "人类技术发展的一些里程碑——以及为什么世界宣言存在。",
+    "backLink": "← 返回世界宣言",
+    "heading": "为什么？",
+    "section1Title": "⚙️ 历史里程碑",
+    "timeline": [
+      { "year": "1698年", "description": "蒸汽机被发明，历史上第一次打破了人类对体力劳动和役畜的绝对依赖。" },
+      { "year": "1750年", "description": "工业革命在英国开始，并扩大了机械化大规模生产。" },
+      { "year": "1800年", "description": "化学电池被发明（并于1896年在美国实现大规模商业化）。" },
+      { "year": "1801年", "description": "自动织布机被发明——世界上第一个可编程机械装置。" },
+      { "year": "1809年", "description": "电灯被发明。" },
+      { "year": "1831年", "description": "发电机被发明，使得机械运动能够转化为可控的电能。" },
+      { "year": "1859年", "description": "可充电电池被发明，从而闭合了可储存和移动动力源的循环。" },
+      { "year": "1954年", "description": "第一个采用核能的公共电网投入使用。" }
+    ],
+    "section2Title": "❓ 为什么会有世界宣言？",
+    "paragraph": "它是为任何想要建立新事物的人准备的现成平台——一个政党、一场运动、一项改革。该宣言要求建立一种新型的国际经济立法：承认技术的成熟，废除债务系统，并赋予所有人享有机器所创造的丰裕物质的权利。"
+  },
+  "FIT": {
+    "title": "Miksi? – Mailmanmanifesti",
+    "description": "Muutamia virstanpylväitä ihmiskunnan teknillisessä kehityksessä — ja miksi Maailman manifesti on olemassa.",
+    "backLink": "← Takaisin Maailman manifestiin",
+    "heading": "Miksi?",
+    "section1Title": "⚙️ Historialliset virstanpylväät",
+    "timeline": [
+      { "year": "Vuosi 1698", "description": "Höyrykone kekshitäh, joka rikkoo ensimmälisen kerran ihmiskunnan ehottoman riippuvaisuuven lihasvoimasta ja vetojuomasta." },
+      { "year": "Vuosi 1750", "description": "Teollinen vallankumous alkkaa Englannissa ja skaalatha ylös mekaanista massatuotanthoa." },
+      { "year": "Vuosi 1800", "description": "Kemillinen akku kekshitäh (ja se löythyyt kaupallisesti saatavilla isossa mitassa USA:ssa vuonna 1896)." },
+      { "year": "Vuosi 1801", "description": "Automatiseerattu kangaspuu kekshitäh – mailman ensimäinen ohjelmoitava mekaaninen laite." },
+      { "year": "Vuosi 1809", "description": "Sähkövalo kekshitäh." },
+      { "year": "Vuosi 1831", "description": "Generaattori kekshitäh ja se mahđollistaa liikkhumisen muuttamisen ohjattavaksi sähköenergiaksi." },
+      { "year": "Vuosi 1859", "description": "Ladathava akku kekshitäh, joka sulkee kehän varastoitavalle ja mobiilille vetovoimalle." },
+      { "year": "Vuosi 1954", "description": "Ensimäinen julkinen ydinvoiman sähköverkko otethaan käyttöön." }
+    ],
+    "section2Title": "❓ Miksi Maailman manifesti on olemassa?",
+    "paragraph": "Se oon valmis plattvormi sille joka haluap rakentaa jotaki uutta — puoluheen, likkheen, reformin. Manifesti vaatpii uudenlaista kansainvälistä taloudellista lainsäättämistä: sellasta joka tunnustah teknyikin kypsyyen, poistaa velkasysteemin ja anothaa kaikile ihmisile oikeuven siihen yltäkylläisyytheen jonka koneet luothaan."
+  },
+  "SE": {
+    "title": "Manne? – Máilmmimanifesta",
+    "description": "Muhtun historjjálaš ceahkit olmmošvuođa teknihkalaš ovdáneamis — ja manne Máilmmimanifesta gávdno.",
+    "backLink": "← Ruovttoluotta Máilmmimanifestii",
+    "heading": "Manne?",
+    "section1Title": "⚙️ Historjjálaš ceahkit",
+    "timeline": [
+      { "year": "Jahki 1698", "description": "Bálvemášina keksejuvvo ja botte vuosttas geardde olmmošvuođa ollislaš sorjavašvuođa lihkadanfámus ja geassetjeatniin." },
+      { "year": "Jahki 1750", "description": "Industriala revolušuvdna álgá Englánddas ja bajida mekaanalaš massabuvttadeami." },
+      { "year": "Jahki 1800", "description": "Kemalaš akku keksejuvvo (ja gávdno gávppálaččat stuorra mihtus USA:s jagi 1896)." },
+      { "year": "Jahki 1801", "description": "Automatiserenjuvvon gođđongálvu keksejuvvo – máilmmis vuosttas prográmmerenvejolaš mekaanalaš rusttet." },
+      { "year": "Jahki 1809", "description": "Elektralaš čuovga keksejuvvo." },
+      { "year": "Jahki 1831", "description": "Generáhtor keksejuvvo ja dahká vejolažžan earáhit lihkadusa stivrejuvvon elektralaš energiijai." },
+      { "year": "Jahki 1859", "description": "Akku man sáhttá laddet keksejuvvo, mii giddet birrasiid vurkkuhanvejolaš ja mobiila fievrridanfámus." },
+      { "year": "Jahki 1954", "description": "Vuosttas almmolaš šleađđofierpmádat atomfámus váldojuvvo geavahussii." }
+    ],
+    "section2Title": "❓ Manne Máilmmimanifesta gávdno?",
+    "paragraph": "Dat lea gárvvis platformma sidjiide geat háliidit hukset juoidá ođđa — bellodaga, lihkadusa, reformma. Manifesta gáibida ođđa hápmása riikkaidgaskasaš ekonomalaš láhkaásahusas: dakkára mii dovddasta teknihka rávisvuođa, sihkku eret vealjesystema ja addá buot olbmuide vuoigatvuođa dan valljodahkii maid mašiidnat dahket."
+  },
+  "FI": {
+    "title": "Miksi? – Maailman manifesti",
+    "description": "Muutama virstanpylväs ihmiskunnan teknologisessa kehityksessä — ja miksi Maailman manifesti on olemassa.",
+    "backLink": "← Takaisin Maailman manifestiin",
+    "heading": "Miksi?",
+    "section1Title": "⚙️ Historialliset virstanpylväät",
+    "timeline": [
+      { "year": "Vuosi 1698", "description": "Höyrykone keksitään ja se katkaisee ensimmäistä kertaa ihmiskunnan ehdottoman riippuvuuden lihasvoimasta ja vetojuomasta." },
+      { "year": "Vuosi 1750", "description": "Teollinen vallankumous alkaa Englannissa ja skaalaa ylös mekaanista massatuotantoa." },
+      { "year": "Vuosi 1800", "description": "Kemiallinen akku keksitään (ja se on kaupallisesti saatavilla laajoissa mitoissa USA:ssa vuonna 1896)." },
+      { "year": "Vuosi 1801", "description": "Automatisoitu kangaspuu keksitään – maailman ensimmäinen ohjelmoitava mekaaninen laite." },
+      { "year": "Vuosi 1809", "description": "Sähkövalo keksitään." },
+      { "year": "Vuosi 1831", "description": "Generaattori keksitään ja se mahdollistaa liikkeen muuntamisen hallittavaksi sähköenergiaksi." },
+      { "year": "Vuosi 1859", "description": "Ladattava akku keksitään, mikä sulkee ympyrän varastoitavalle ja mobiilille voimanlähteelle." },
+      { "year": "Vuosi 1954", "description": "Ensimmäinen julkinen ydinvoiman sähköverkko otetaan käyttöön." }
+    ],
+    "section2Title": "❓ Miksi Maailman manifesti on olemassa?",
+    "paragraph": "Se on valmis alusta sille, joka haluaa rakentaa jotakin uutta — puolueen, liikkeen, reformin. Manifesti vaatii uudenlaista kansainvälistä taloudellista lainsäädäntöä: sellaista, joka tunnustaa tekniikan kypsyyden, poistaa velkajärjestelmän ja antaa kaikille ihmisille oikeuden siihen yltäkylläisyyteen, jonka koneet luovat."
+  },
+  "NO": {
+    "title": "Hvorfor? – Verdensmanifestet",
+    "description": "Noen milepæler i menneskehetens tekniske utvikling — og hvorfor Verdensmanifestet finnes.",
+    "backLink": "← Tilbake til Verdensmanifestet",
+    "heading": "Hvorfor?",
+    "section1Title": "⚙️ Historiske milepæler",
+    "timeline": [
+      { "year": "År 1698", "description": "Dampmaskinen oppvinnes og bryter for første gang menneskehetens absolutte avhengighet av muskelkraft og trekkdyr." },
+      { "year": "År 1750", "description": "Den industrielle revolusjonen innledes i England og skalerer opp mekanisk masseproduksjon." },
+      { "year": "År 1800", "description": "Det kjemiske batteriet oppvinnes (og er kommersielt tilgjengelig i stor skala i USA i 1896)." },
+      { "year": "År 1801", "description": "Den automatiserte vevstolen oppvinnes – verdens første programmerbare mekaniske anordning." },
+      { "year": "År 1809", "description": "Elektrisk lys oppvinnes." },
+      { "year": "År 1831", "description": "Generatoren oppvinnes og muliggjør omdanning av bevegelse til kontrollerbar elektrisk energi." },
+      { "year": "År 1859", "description": "Det oppladbare batteriet oppvinnes, noe som slutter sirkelen for lagringsbar og mobil drivkraft." },
+      { "year": "År 1954", "description": "Det første offentlige strømnettet med kjernekraft tas i bruk." }
+    ],
+    "section2Title": "❓ Hvorfor finnes Verdensmanifestet?",
+    "paragraph": "Det er en ferdig plattform for den som vil bygge noe nytt — et parti, en bevegelse, en reform. Manifestet krever en ny form for internasjonal økonomisk lovgivning: en som anerkjenner teknikkens modenhet, avskaffer gjeldsystemet og gir alle mennesker rett til det overflødet som maskinene skaper."
+  },
+  "DA": {
+    "title": "Hvorfor? – Verdensmanifestet",
+    "description": "Nogle milepæle i menneskehedens tekniske udvikling — og hvorfor Verdensmanifestet findes.",
+    "backLink": "← Tilbage til Verdensmanifestet",
+    "heading": "Hvorfor?",
+    "section1Title": "⚙️ Historiske milepæle",
+    "timeline": [
+      { "year": "År 1698", "description": "Dampmaskinen opfindes og bryder for første gang menneskehedens absolutte afhængighed af muskelkraft og trækdyr." },
+      { "year": "År 1750", "description": "Den industrielle revolution indledes i England og skalerer op for mekanisk masseproduktion." },
+      { "year": "År 1800", "description": "Det kemiske batteri opfindes (og er kommercielt tilgængeligt i stor skala i USA i 1896)." },
+      { "year": "År 1801", "description": "Den automatiserede vævstol opfindes – verdens første programmerbare mekaniske anordning." },
+      { "year": "År 1809", "description": "Elektrisk lys opfindes." },
+      { "year": "År 1831", "description": "Generatoren opfindes og muliggør omdannelse af bevægelse til kontrollerbar elektrisk energi." },
+      { "year": "År 1859", "description": "Det genopladelige batteri opfindes, hvilket slutter cirklen for lagerbar og mobil drivkraft." },
+      { "year": "År 1954", "description": "Det første offentlige elnet med kernekraft tages i brug." }
+    ],
+    "section2Title": "❓ Hvorfor findes Verdensmanifestet?",
+    "paragraph": "Det er en færdig platform for den, der vil bygge noget nyt — et parti, en bevægelse, en reform. Manifestet kræver en ny form for international økonomisk lovgivning: en der anerkender teknologiens modenhed, afskaffer gældssystemet og giver alle mennesker ret til det overflod, som maskinerne skaber."
+  },
+  "FO": {
+    "title": "Hví? – Heimslýsingin",
+    "description": "Nakrir týdningarmiklir varðar í tøkniligu menning mannasamfelagsins — og hví Heimslýsingin er til.",
+    "backLink": "← Aftur til Heimslýsingina",
+    "heading": "Hví?",
+    "section1Title": "⚙️ Søguligir varðar",
+    "timeline": [
+      { "year": "Árið 1698", "description": "Dampmaskinan verður uppfunnin og brýtur fyri fyrstu ferð fullkomiliga bundinskap mannasamfelagsins av vøddafjøri og drápsdýrum." },
+      { "year": "Árið 1750", "description": "Iðnaðarkollveltiran byrjar í Onglandi og skalar upp mekaniska massframleiðslu." },
+      { "year": "Árið 1800", "description": "Kemiska battaríið verður uppfunnið (og er handilsliga tøkt í stórum stigi í USA í 1896)." },
+      { "year": "Árið 1801", "description": "Tann automatiseraði vevstólurin verður uppfunnið – heimsins fyrsta forritanliga mekaniska amboð." },
+      { "year": "Árið 1809", "description": "Elektriskt ljós verður uppfunnið." },
+      { "year": "Árið 1831", "description": "Generatorin verður uppfunnið og ger tað møguligt at broyta rørslu til stýriliga elektriska energi." },
+      { "year": "Árið 1859", "description": "Tað upplaðiliga battaríið verður uppfunnið, sum lokkar ringina til goymsluføra og mobila drívmegi." },
+      { "year": "Árið 1954", "description": "Tað fyrsta almenna elnetið við kjarnorku verður tikið í nýtslu." }
+    ],
+    "section2Title": "❓ Hví er Heimslýsingin til?",
+    "paragraph": "Tað er ein liðugur pallur fyri tann, sum vil byggja okkurt nýtt — eitt flokk, eina hreyfing, eina reform. Lýsingin krevur ein nýggjan form av altjóða búskaparligari lógasmiðju: eina, sum viðkennur tøkninnar móning, avtekur skuldaskipanina og gevur øllum fólkum rætt til tað yvirflóð, sum maskinurnar skapa."
+  },
+  "AF": {
+    "title": "Waarom? – Die Wêreldmanifes",
+    "description": "Enkele mylpale in die mensdom se tegnologiese ontwikkeling — en waarom die Wêreldmanifes bestaan.",
+    "backLink": "← Terug na die Wêreldmanifes",
+    "heading": "Waarom?",
+    "section1Title": "⚙️ Historiese mylpale",
+    "timeline": [
+      { "year": "Jaar 1698", "description": "Die stoommasjien word uitgevind en breek vir die eerste keer die mensdom se absolute afhanklikheid van spierkrag en trekdiere." },
+      { "year": "Jaar 1750", "description": "Die industriële rewolusie begin in Engeland en skaal meganiese massaproduksie op." },
+      { "year": "Jaar 1800", "description": "Die chemiese battery word uitgevind (en is op groot skaal kommersieel beskikbaar in die VSA in 1896)." },
+      { "year": "Jaar 1801", "description": "Die geoutomatiseerde weefstoele word uitgevind – die wêreld se eerste programmeerbare meganiese toestel." },
+      { "year": "Jaar 1809", "description": "Elektriese lig word uitgevind." },
+      { "year": "Jaar 1831", "description": "Die generator word uitgevind en maak die omskakeling van beweging in beheerbare elektriese energie moontlik." },
+      { "year": "Jaar 1859", "description": "Die herlaaibare battery word uitgevind, wat die kringloop sluit vir stoorbare en mobiele dryfkrag." },
+      { "year": "Jaar 1954", "description": "Die eerste openbare kernkrag-kragnetwerk word in gebruik geneem." }
+    ],
+    "section2Title": "❓ Waarom bestaan die Wêreldmanifes?",
+    "paragraph": "Dit is 'n gereed platform vir elkeen wat iets nuuts wil bou — 'n party, 'n beweging, 'n hervorming. Die manifes vereis 'n nuwe vorm van internasionale ekonomiese wetgewing: een wat die tegnologie se volwassenheid erken, die skuldstelsel afskaf en aan alle mense die reg gee op die oorvloed wat die masjiene skep."
+  },
+  "ZU": {
+    "title": "Kungani? – i-World Manifesto",
+    "description": "Ezinye zezigaba ezibalulekile ekuthuthukisweni kwezobuchwepheshe besintu — nokuthi kungani i-World Manifesto ikhona.",
+    "backLink": "← Buyela ku-World Manifesto",
+    "heading": "Kungani?",
+    "section1Title": "⚙️ Izigaba ezibalulekile zomlando",
+    "timeline": [
+      { "year": "Unyaka ka-1698", "description": "Umshini womusi uyasungulwa futhi okokuqala ngqa uphula ukuncika okuphelele kwesintu emandleni emisipha nasezilwaneni zokudonsa." },
+      { "year": "Unyaka ka-1750", "description": "Uguquko lwezimboni luqala eNgilandi futhi lukhulisa ukukhiqizwa okukhulu kwemishini." },
+      { "year": "Unyaka ka-1800", "description": "Ibhethri lamakhemikhali liyasungulwa (futhi latholakala kwezentengiselwano ngendlela enkulu e-USA ngo-1896)." },
+      { "year": "Unyaka ka-1801", "description": "Umshini wokuluka ozenzakalelayo uyasungulwa – umshini wokuqala emhlabeni ohlelekayo wemishini." },
+      { "year": "Unyaka ka-1809", "description": "Ukukhanya kukagesi kuyasungulwa." },
+      { "year": "Unyaka ka-1831", "description": "I-generator iyasungulwa futhi yenza kube lula ukuguqula ukunyakaza kube amandla kagesi alawulekayo." },
+      { "year": "Unyaka ka-1859", "description": "Ibhethri elishajekayo liyasungulwa, okuhlanganisa umjikelezo wamandla okusebenza angagcineka futhi ahambayo." },
+      { "year": "Unyaka ka-1954", "description": "Inethiwekhi yokuqala kagesi yomphakathi esebenzisa amandla enuzi iyaksethenziswa." }
+    ],
+    "section2Title": "❓ Kungani i-World Manifesto ikhona?",
+    "paragraph": "Kuyisiteji esilungile somuntu ofuna ukwakha okuthsha — iqembu, umnyakazo, izinguquko. I-manifesto ifuna uhlobo olusha lwezomthetho wezomnotho wamazwe ngamazwe: oluqaphela ukuvuthwa kwezobuchwepheshe, oluqeda uhlelo lwezikweletu futhi olunikeza bonke abantu ilungelo lokuba nobuningi obudalwa yimishini."
+  },
+  "XH": {
+    "title": "Kutheni? – i-World Manifesto",
+    "description": "Ezinye zeziganeko eziphambili ekuhambeni kobuchwepheshe besintu — nokuba kutheni i-World Manifesto ikhona.",
+    "backLink": "← Buyela kwi-World Manifesto",
+    "heading": "Kutheni?",
+    "section1Title": "⚙️ Izigaba zomlando ezibalulekile",
+    "timeline": [
+      { "year": "Unyaka ka-1698", "description": "Umshini womusi uyasungulwa kwaye okokuqala ngqa waphula ukuxhomekeka okuphelele koluntu kumandla emisipha nakwizilwane zokutsala." },
+      { "year": "Unyaka ka-1750", "description": "Uguquko lwezoshishino luqala eNgilandi kwaye lukhulisa imveliso enkulu yoomatshini." },
+      { "year": "Unyaka ka-1800", "description": "Ibhetri yamachiza iyasungulwa (kwaye yafumaneka kurhwebo ngobuninzi e-USA ngo-1896)." },
+      { "year": "Unyaka ka-1801", "description": "Isixhobo sokuluka esizenzekelayo siyasungulwa – isixhobo sokuqala somatshini esicwangcisekayo emhlabeni." },
+      { "year": "Unyaka ka-1809", "description": "Ukukhanya kombane kuyasungulwa." },
+      { "year": "Unyaka ka-1831", "description": "Ijenethi (generator) iyasungulwa kwaye yenza ukuba kube lula ukuguqula intshukumo ibe ngamandla ombane alawulekayo." },
+      { "year": "Unyaka ka-1859", "description": "Ibhetri enokuphinda itshajwe iyasungulwa, nto leyo evala isangqa samandla okuqhuba anokugcinwa nangehamba." },
+      { "year": "Unyaka ka-1954", "description": "Inethiwekhi yokuqala yombane kawonkewonke esebenzisa amandla enyukliya iyasetyenziswa." }
+    ],
+    "section2Title": "❓ Kutheni i-World Manifesto ikhona?",
+    "paragraph": "Yindawo okanye iqonga elilungiselelwe nabani na ofuna ukwakha into entsha — iqela, intshukunyiso, uhlaziyo. I-manifesto ifuna uhlobo olutsha lwezomthetho wezomnotho wamazwe ngamazwe: olubonisa ukuvuthwa kobuchwepheshe, oluphelisa inkqubo yamatyala kwaye lunika bonke abantu ilungelo lobuninzi obudalwa yoomatshini."
+  },
+  "YUE": {
+    "title": "點解？ – 世界宣言",
+    "description": "人類科技發展嘅一啲里程碑 —— 同埋點解會有《世界宣言》。",
+    "backLink": "← 返去世界宣言",
+    "heading": "點解？",
+    "section1Title": "⚙️ 歷史里程碑",
+    "timeline": [
+      { "year": "1698年", "description": "蒸汽機發明，首次打破人類對體力同拉車動物嘅絕對依賴。" },
+      { "year": "1750年", "description": "工業革命喺英國開始，大規模擴展機械化大量生產。" },
+      { "year": "1800年", "description": "化學電池發明（並喺1896年喺美國大規模商業化）。" },
+      { "year": "1801年", "description": "自動織布機發明——世界上第一部可編程機械裝置。" },
+      { "year": "1809年", "description": "電燈發明。" },
+      { "year": "1831年", "description": "發電機發明，令到可以將運動轉化為可控嘅電能。" },
+      { "year": "1859年", "description": "可充電電池發明，為可儲存同流動嘅動力完美收尾。" },
+      { "year": "1954年", "description": "首個公共核電網投入運作。" }
+    ],
+    "section2Title": "❓ 點解要有世界宣言？",
+    "paragraph": "呢個係一個為任何想建立新事物嘅人準備好嘅平台——無論係一個政黨、一場運動，定係一項改革。宣言倡議建立一種新嘅國際經濟立法：一種承認技術成熟、廢除債務制度，並畀所有人權利去享有機器所創造嘅豐盛資源嘅立法。"
+  },
+  "JV": {
+    "title": "Kenaapa? – Manifesto Donya",
+    "description": "Sawetara tonggak sajarah ing pangembangan teknologi manungsa — lan kenapa Manifesto Donya iki ana.",
+    "backLink": "← Bali menyang Manifesto Donya",
+    "heading": "Kenaapa?",
+    "section1Title": "⚙️ Tonggak Sajarah",
+    "timeline": [
+      { "year": "Taun 1698", "description": "Mesin uap ditemokake, kanggo pisanan mecahake ketergantungan mutlak manungsa marang tenaga otot lan kewan penarik." },
+      { "year": "Taun 1750", "description": "Revolusi Industri diwiwiti ing Inggris, ngembangake produksi massal mekanis." },
+      { "year": "Taun 1800", "description": "Baterei kimia ditemokake (lan dadi kasedhiya kanthi komersial ing skala gedhe ing AS taun 1896)." },
+      { "year": "Taun 1801", "description": "Alat tenun otomatis ditemokake – piranti mekanik pertama ing donya sing bisa diprogram." },
+      { "year": "Taun 1809", "description": "Lampu listrik ditemokake." },
+      { "year": "Taun 1831", "description": "Generator ditemokake, ngaktifake konversi gerakan dadi energi listrik sing bisa dikontrol." },
+      { "year": "Taun 1859", "description": "Baterei sing bisa diisi ulang ditemokake, ngrampungake siklus kanggo daya gerak sing bisa disimpen lan dipindhah." },
+      { "year": "Taun 1954", "description": "Jaringan listrik tenaga nuklir umum pertama diresmikake." }
+    ],
+    "section2Title": "❓ Kenaapa Manifesto Donya iki ana?",
+    "paragraph": "Iki minangka platform sing wis siap kanggo sapa wae sing pengin mbangun sesuatu sing anyar — partai, gerakan, utawa reformasi. Manifesto iki ngajak nggawe undang-undang ekonomi internasional anyar: sing ngakoni kematangan teknologi, mbusak sistem utang, lan menehi hak marang kabeh wong kanggo nikmati kelimpahan sing digawe dening mesin."
+  }
+}
