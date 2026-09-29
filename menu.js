@@ -16,7 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // --- HÄMTA SPRÅK FRÅN WEBBLÄSAREN MED FALLBACK ---
-    const currentLang = pickBestLanguage();
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLangParam = urlParams.get('lang');
+    const currentLang = urlLangParam
+        ? pickBestLanguage(AVAILABLE, [urlLangParam])
+        : pickBestLanguage();
 
     // --- MAPPING FÖR FLAGGBILDER (från ../lang/flags/) ---
     const flagMapping = {
