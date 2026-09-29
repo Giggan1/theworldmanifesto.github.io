@@ -525,6 +525,7 @@
         const currentLang = urlLangParam ? pickBestLanguage(AVAILABLE, [urlLangParam]) : pickBestLanguage();
         const RTL_LANGS = ['ar', 'he', 'fa', 'ur'];
         document.documentElement.dir = RTL_LANGS.includes(currentLang) ? 'rtl' : 'ltr';
+        document.documentElement.lang = currentLang;
 
         var titlar = {
             'sv': 'Världsmanifestet', 'en': 'The World Manifesto', 'zh': '世界宣言',
